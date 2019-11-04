@@ -16,3 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('/manualcalorieadd', 'ManualcalorieController@index')->name('manualcalorieadd.index');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

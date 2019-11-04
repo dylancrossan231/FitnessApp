@@ -1,4 +1,9 @@
 <?php
+# @Date:   2019-10-29T15:07:51+00:00
+# @Last modified time: 2019-11-04T23:14:17+00:00
+
+
+
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -15,11 +20,14 @@ class CreateFoodsTable extends Migration
     {
         Schema::create('foods', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('name');
             $table->string('protein');
             $table->string('carbohydrates');
             $table->string('fats');
             $table->string('calories');
+            $table->string('weight');
             $table->timestamps();
+            
         });
     }
 
