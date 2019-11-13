@@ -13,8 +13,10 @@ use App\Api;
   //The headers part is a header that is attached to your http request - The tesco api expects a subscription key
   $response =$client->request('GET', 'https://dev.tescolabs.com/product/?tpnc=268231759', [
       'headers' => [
-          'Ocp-Apim-Subscription-Key' => env('API_KEY')
-          // 'a3c51c289be148ac9492336f4b6dadff'
+          'Ocp-Apim-Subscription-Key' => 'a3c51c289be148ac9492336f4b6dadff'
+          //env('API_KEY')
+          
+          
       ]
   ]);
 
