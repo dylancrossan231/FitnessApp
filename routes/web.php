@@ -1,4 +1,9 @@
 <?php
+# @Date:   2019-10-29T14:03:53+00:00
+# @Last modified time: 2019-11-12T19:16:46+00:00
+
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +21,7 @@ Route::get('/', function () {
 });
 
 Route::get('/manualcalorieadd', 'ManualcalorieController@index')->name('manualcalorieadd.index');
+Route::get('/apiview', 'ApiController@index')->name('apiview.index');
 
 Auth::routes();
 
