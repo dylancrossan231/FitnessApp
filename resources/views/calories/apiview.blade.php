@@ -1,33 +1,20 @@
 @extends('layouts.app')
 @section('content')
 
-<?php
-use GuzzleHttp\Client;
-use App\Api;
-
-  //This line creates a new Client from guzzle -> This client is basically a http request
-  $client = new Client();
-
-  //This part querys a url that I have hardcoded, you will want to make this a variable in yours
-
-  //The headers part is a header that is attached to your http request - The tesco api expects a subscription key
-  $response =$client->request('GET', 'https://dev.tescolabs.com/product/?tpnc=268231759', [
-      'headers' => [
-          'Ocp-Apim-Subscription-Key' => env('API_KEY')
-          // 'a3c51c289be148ac9492336f4b6dadff'
-      ]
-  ]);
-
-  //This function runs your request
-  $response=$response->getBody();
-  //This line turns the returned json into an array -> you need to do this so laravel can understand the json object
-  $response = json_decode($response, true);
-   // dd($response);
-
-  ?>
 
 
-    {{-- //This is a laravel loop which runs through the "products" in the JSON --}}
+<form action="{{ route('apiview.search') }}" method="POST">
+
+  <div class="form-group">
+      <input type="search" name="search" class="form-control">
+      <input type="hidden" name="_token" value="{{ csrf_token() }}">
+      <span class="form-group-btn">
+        <button type="submit" class="btn btn-primary">Search</button>
+        </span>
+     </div>   
+</form>
+
+
     @foreach($response['products'] as $product)
         <h2>
         Product:
@@ -47,15 +34,8 @@ use App\Api;
 
                 {{-- {{ $nutritional['perServingHeader'] }} --}}
 
-
-
-
              @endforeach
     @endforeach
 
-
-
-
-
-
   @endsection
+

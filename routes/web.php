@@ -22,6 +22,11 @@ Route::get('/', function () {
 
 Route::get('/manualcalorieadd', 'ManualcalorieController@index')->name('manualcalorieadd.index');
 Route::get('/apiview', 'ApiController@index')->name('apiview.index');
+Route::post('/apiview/search', 'ApiController@search')->name('apiview.search');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
