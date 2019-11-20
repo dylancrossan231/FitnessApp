@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-<h1> Search Results for <?php $query ?> </h1>
+<h1> Search Results for {{ $query }}  </h1>
 
     @foreach($response ['uk']['ghs']['products']['results'] as $product)
 
