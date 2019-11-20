@@ -54,8 +54,9 @@ public function search(Request $request)
 
   $response=$response->getBody();
   $response = json_decode($response, true);
- // dd($response);
-//  return $response;
+ 
+
+//  dd($response);
 
 return view('calories.searchcalories')->with([
   'response'=>$response,'query'=> $query]);
