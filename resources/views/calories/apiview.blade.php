@@ -1,4 +1,11 @@
 @extends('layouts.app')
+# @Author: izzy
+# @Date:   2019-11-19T11:52:45+00:00
+# @Last modified by:   izzy
+# @Last modified time: 2019-11-19T12:58:07+00:00
+
+
+
 @section('content')
 
 
@@ -12,7 +19,7 @@
       <span class="form-group-btn">
         <button type="submit" class="btn btn-primary">Search</button>
         </span>
-     </div>   
+     </div>
 </form>
 =======
   //The headers part is a header that is attached to your http request - The tesco api expects a subscription key
@@ -20,8 +27,8 @@
       'headers' => [
           'Ocp-Apim-Subscription-Key' => 'a3c51c289be148ac9492336f4b6dadff'
           //env('API_KEY')
-          
-          
+
+
       ]
   ]);
 >>>>>>> 3327135562c867de8dd0b56b397975cd2b800abc
@@ -65,8 +72,8 @@
       'headers' => [
           'Ocp-Apim-Subscription-Key' => 'a3c51c289be148ac9492336f4b6dadff'
           //env('API_KEY')
-          
-          
+
+
       ]
   ]);
 
@@ -93,4 +100,3 @@
 
 >>>>>>> 3327135562c867de8dd0b56b397975cd2b800abc
   @endsection
-
