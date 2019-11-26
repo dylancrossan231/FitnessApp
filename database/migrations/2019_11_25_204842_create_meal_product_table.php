@@ -21,7 +21,7 @@ class CreateMealProductTable extends Migration
             $table->timestamps();
 
             $table->foreign('meal_id')->references('id')->on('meal');
-            $table->foreign('food_id')->references('id')->on('food');
+            $table->foreign('food_id')->references('id')->on('foods');
         });
     }
 

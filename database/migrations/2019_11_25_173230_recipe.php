@@ -14,7 +14,7 @@ class Recipe extends Migration
     public function up()
     {
         Schema::create('recipe', function (Blueprint $table){
-        $table->integer('id');
+        $table->bigIncrements('id');
         $table->String('name');
         $table->integer('recipe_amount');
 

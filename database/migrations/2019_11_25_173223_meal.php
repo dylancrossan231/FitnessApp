@@ -14,7 +14,7 @@ class Meal extends Migration
     public function up()
     {
         Schema::create('meal', function(Blueprint $table){
-        $table->integer('id');
+        $table->bigIncrements('id');
         $table->timestamps();
         $table->integer('user_id');
         $table->integer('mealtype_id');
