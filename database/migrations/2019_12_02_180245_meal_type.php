@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Meal extends Migration
+class MealType extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class Meal extends Migration
      */
     public function up()
     {
-        Schema::create('meal', function(Blueprint $table){
-        $table->bigIncrements('id');
-        $table->integer('userid');
-        $table->integer('mealtype');
-        $table->timestamps();
-        
-    });
+        Schema::create('mealType', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->bigInteger('name')->unsigned();
+            $table->timestamps();
+
+            
+        });
     }
 
     /**

@@ -16,7 +16,7 @@ class Weight extends Migration
         Schema::create('weight', function(Blueprint $table){
             $table->bigIncrements('id');
             $table->timestamps();
-            $table->integer('user_id');
+            $table->integer('userid');
             $table->integer('weight');
         });
 

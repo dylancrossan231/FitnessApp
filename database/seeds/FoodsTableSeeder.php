@@ -24,5 +24,6 @@ class FoodsTableSeeder extends Seeder
           $food->calories = '224';
           $food->weight = '50';
           $food->save();
+
     }
 }

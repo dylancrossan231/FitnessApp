@@ -46,7 +46,7 @@ public function search(Request $request)
 
   $client = new Client();
 
-  $response =$client->request('GET', 'https://dev.tescolabs.com/grocery/products/?query='.$query.'&offset=0&limit=10', [
+  $response =$client->request('GET', 'https://dev.tescolabs.com/grocery/products/?query='.$query.'&offset=0&limit=20', [
       'headers' => [
           'Ocp-Apim-Subscription-Key'=>'a3c51c289be148ac9492336f4b6dadff'
           
@@ -57,7 +57,7 @@ public function search(Request $request)
   $response = json_decode($response, true);
  
 
-//  dd($response);
+ // dd($response);
 
 return view('calories.searchcalories')->with([
   'response'=>$response,'query'=> $query]);
