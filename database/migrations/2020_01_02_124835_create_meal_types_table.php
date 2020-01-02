@@ -1,10 +1,17 @@
 <?php
+# @Author: izzy
+# @Date:   2020-01-02T12:48:35+00:00
+# @Last modified by:   izzy
+# @Last modified time: 2020-01-02T13:11:01+00:00
+
+
+
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class MealType extends Migration
+class CreateMealTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +20,10 @@ class MealType extends Migration
      */
     public function up()
     {
-        Schema::create('mealType', function (Blueprint $table) {
+        Schema::create('meal_types', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('name')->unsigned();
+            $table->string('name');
             $table->timestamps();
-
-            
         });
     }
 
@@ -29,6 +34,6 @@ class MealType extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('meal_types');
     }
 }
