@@ -32,7 +32,7 @@
                <p>Per 100g  :{{ $nutritional['valuePer100']}}g</p>
 
 
-                {{-- {{ $nutritional['perServingHeader'] }} --}}
+                
 
              @endforeach
     @endforeach

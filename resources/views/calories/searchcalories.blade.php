@@ -16,10 +16,6 @@
     </br>
     </br>
 
-                    
-
-
-
 
     @endforeach
 

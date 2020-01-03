@@ -21,11 +21,17 @@ class CreateFoodsTable extends Migration
         Schema::create('foods', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->integer('api_id');
+            $table->integer('grams');
+            $table->integer('energykj');
+            $table->integer('energykcals');
             $table->string('protein');
             $table->string('carbohydrates');
+            $table->string('sugars');
             $table->string('fats');
-            $table->string('calories');
-            $table->string('weight');
+            $table->string('saturatedfat');
+            $table->string('fiber');
+
             $table->timestamps();
             
         });
