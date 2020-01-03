@@ -36,6 +36,35 @@ class ApiController extends Controller
           
 }
 
+public function show($TPNB)
+{
+  
+ 
+
+  $client = new Client();
+  
+  $response =$client->request('GET', 'https://dev.tescolabs.com/product/?tpnb='.$TPNB.'', [
+      'headers' => [
+          'Ocp-Apim-Subscription-Key'=>'a3c51c289be148ac9492336f4b6dadff'
+          //env('API_KEY')
+          
+      ]
+  ]);
+
+  $response=$response->getBody();
+  $response = json_decode($response, true);
+ // dd($response);
+//  return $response;
+
+           return view('calories.apisearchshowproduct')->with([
+             'response'=>$response]);
+        
+}
+
+
+
+
+
 
 public function search(Request $request)
 {
