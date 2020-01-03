@@ -1,6 +1,6 @@
 <?php
 # @Date:   2019-10-29T14:03:53+00:00
-# @Last modified time: 2019-11-04T23:21:25+00:00
+# @Last modified time: 2020-01-02T14:12:50+00:00
 
 
 use App\User;
@@ -16,8 +16,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
-        $this->call(FoodsTableSeeder::class);
-        
+        $this->call(UsersTableSeeder::class);
+        $this->call(WeightsTableSeeder::class);
+
     }
 }

@@ -15,5 +15,13 @@ class Meal extends Model
     {
         return $this->belongsToMany('App\Product', 'meal_product');
     }
+
+    public function mealtype() {
+        return $this->belongsTo('App\mealType');
+    }
+
+    public function user() {
+        return $this->belongsTo('App\mealType');
+    }
     
 }
