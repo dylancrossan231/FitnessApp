@@ -2,7 +2,7 @@
 # @Author: izzy
 # @Date:   2020-01-02T12:49:09+00:00
 # @Last modified by:   izzy
-# @Last modified time: 2020-01-02T13:11:52+00:00
+# @Last modified time: 2020-01-06T05:37:27+00:00
 
 
 
@@ -23,16 +23,16 @@ class CreateIngredientsTable extends Migration
         Schema::create('ingredients', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->integer('api_id');
+            $table->integer('api_id')->nullable();
             $table->string('unit');
-            $table->integer('energy_kj');
-            $table->integer('energy_kcal');
-            $table->string('protein');
-            $table->string('carbs');
-            $table->string('sugar');
-            $table->string('fat');
-            $table->string('saturated_fat');
-            $table->string('fiber');
+            $table->decimal('energy_kj', 4, 1);
+            $table->decimal('energy_kcal', 4, 1);
+            $table->decimal('protein', 4, 1);
+            $table->decimal('carbs', 4, 1);
+            $table->decimal('sugar', 4, 1);
+            $table->decimal('fat', 4, 1);
+            $table->decimal('saturated_fat', 4, 1);
+            $table->decimal('fiber', 4, 1);
             $table->boolean('is_product');
             $table->timestamps();
         });

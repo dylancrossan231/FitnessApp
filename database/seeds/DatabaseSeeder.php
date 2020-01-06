@@ -1,10 +1,9 @@
 <?php
 # @Date:   2019-10-29T14:03:53+00:00
-# @Last modified time: 2020-01-02T14:12:50+00:00
+# @Last modified time: 2020-01-06T05:34:51+00:00
 
 
-use App\User;
-use App\Food;
+
 
 use Illuminate\Database\Seeder;
 class DatabaseSeeder extends Seeder
@@ -18,6 +17,10 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(UsersTableSeeder::class);
         $this->call(WeightsTableSeeder::class);
+        $this->call(MealTypesTableSeeder::class);
+        $this->call(MealsTableSeeder::class);
+        $this->call(RecipesTableSeeder::class);
+        $this->call(IngredientsTableSeeder::class);
 
     }
 }

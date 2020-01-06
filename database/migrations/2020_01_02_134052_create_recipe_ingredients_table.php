@@ -2,7 +2,7 @@
 # @Author: izzy
 # @Date:   2020-01-02T13:40:52+00:00
 # @Last modified by:   izzy
-# @Last modified time: 2020-01-02T13:41:42+00:00
+# @Last modified time: 2020-01-06T05:38:14+00:00
 
 
 
@@ -22,13 +22,13 @@ class CreateRecipeIngredientsTable extends Migration
     {
         Schema::create('recipe_ingredients', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('ingredient_amount');
-            $table->bigInteger('recipe_id')->unsigned();
+            $table->decimal('ingredient_amount', 4, 2);
             $table->bigInteger('ingredient_id')->unsigned();
+            $table->bigInteger('recipe_id')->unsigned();
             $table->timestamps();
 
-            $table->foreign('recipe_id')->references('id')->on('recipes');
             $table->foreign('ingredient_id')->references('id')->on('ingredients');
+            $table->foreign('recipe_id')->references('id')->on('recipes');
         });
     }
 

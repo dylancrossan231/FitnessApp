@@ -2,7 +2,7 @@
 # @Author: izzy
 # @Date:   2020-01-02T12:48:54+00:00
 # @Last modified by:   izzy
-# @Last modified time: 2020-01-02T13:11:15+00:00
+# @Last modified time: 2020-01-06T05:37:35+00:00
 
 
 
@@ -23,20 +23,8 @@ class CreateRecipesTable extends Migration
         Schema::create('recipes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->integer('api_id');
-            $table->integer('grams');
-            $table->integer('energykj');
-            $table->integer('energykcals');
-            $table->string('protein');
-            $table->string('carbohydrates');
-            $table->string('sugars');
-            $table->string('fats');
-            $table->string('saturatedfat');
-            $table->string('fiber');
-            $table->string('unit');
-            $table->integer('amount');
+            $table->decimal('amount', 4, 2);
             $table->integer('portions');
-
             $table->timestamps();
         });
     }
