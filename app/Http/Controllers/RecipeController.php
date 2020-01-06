@@ -2,7 +2,7 @@
 # @Author: izzy
 # @Date:   2019-12-03T11:51:49+00:00
 # @Last modified by:   izzy
-# @Last modified time: 2020-01-06T05:50:03+00:00
+# @Last modified time: 2020-01-06T10:45:35+00:00
 
 
 
@@ -11,6 +11,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Recipe;
+use App\Ingredient;
+use App\Meal;
 
 
 class RecipeController extends Controller
@@ -22,7 +24,11 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        //
+      $recipes = Recipe::all();
+
+      return view('recipes.index')->with([
+        'recipes' => $recipes
+      ]);
     }
 
     /**
@@ -32,7 +38,7 @@ class RecipeController extends Controller
      */
     public function create()
     {
-        //
+        return view('recipes.create');
     }
 
     /**
@@ -43,7 +49,19 @@ class RecipeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $request->validate([
+        'name' => 'required|max:25',
+        'amount' => 'required',
+        'portions' => 'required'
+      ]);
+
+      $recipe = new Recipe();
+
+      $recipe->name = $request->input('name');
+      $recipe->amount = $request->input('amount');
+      $recipe->portions = $request->input('portions');
+
+      $recipe->save();
     }
 
     /**
@@ -52,9 +70,12 @@ class RecipeController extends Controller
      * @param  \App\Recipe  $recipe
      * @return \Illuminate\Http\Response
      */
-    public function show(Recipe $recipe)
+    public function show($id)
     {
-        //
+      $recipe = Recipe::findOrFail($id);
+      return view('recipes.show')->with([
+        'recipe' => $recipe
+      ]);
     }
 
     /**
@@ -63,9 +84,12 @@ class RecipeController extends Controller
      * @param  \App\Recipe  $recipe
      * @return \Illuminate\Http\Response
      */
-    public function edit(Recipe $recipe)
+    public function edit($id)
     {
-        //
+      $recipe = Recipe::findOrFail($id);
+      return view('recipes.edit')->with([
+        'recipe' => $recipe
+      ]);
     }
 
     /**
@@ -75,9 +99,19 @@ class RecipeController extends Controller
      * @param  \App\Recipe  $recipe
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Recipe $recipe)
+    public function update(Request $request, $id)
     {
-        //
+      $request->validate([
+        'name' => 'required|max:25',
+        'amount' => 'required',
+        'portions' => 'required'
+      ]);
+
+      $recipe->name = $request->input('name');
+      $recipe->amount = $request->input('amount');
+      $recipe->portions = $request->input('portions');
+
+      $recipe->save();
     }
 
     /**
@@ -86,8 +120,10 @@ class RecipeController extends Controller
      * @param  \App\Recipe  $recipe
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Recipe $recipe)
+    public function destroy($id)
     {
-        //
+      $recipe = Recipe::findOrFail($id);
+      $recipe->delete();
+      return redirect()->route('recipes.index');
     }
 }

@@ -2,7 +2,7 @@
 # @Author: izzy
 # @Date:   2020-01-06T06:01:59+00:00
 # @Last modified by:   izzy
-# @Last modified time: 2020-01-06T10:21:16+00:00
+# @Last modified time: 2020-01-06T07:39:51+00:00
 
 
 
@@ -11,19 +11,22 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
-                  @if (count($weights) === 0)
-                  <p>There are no weight measurements to display.</p>
+                  @if (count($meals) === 0)
+                  <p>There are no meals to display.</p>
                   @else
-                  <table id="table-weights" class="table table-hover">
+                  <table id="table-meals" class="table table-hover">
                     <thead>
-                      <th>Weight</th>
+                      <th>Meal</th>
                       <th>Date</th>
+                      <th>Time</th>
                     </thead>
                     <tbody>
-                      @foreach ($weights as $weight)
-                      <tr data id="{{ $weight->id }}">
-                        <td>{{ $weight->value }} kg</td>
-                        <td>{{ $weight->date }}</td>
+                      @foreach ($meals as $meal)
+                      <tr data id="{{ $meal->id }}">
+                        <td>{{ $meal->meal_type_id }}</td>
+                        <td>{{ $meal->date }}</td>
+                        <td>{{ $meal->time }}</td>
+                        <td></td>
                       </tr>
                       @endforeach
                     </tbody>

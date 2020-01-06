@@ -2,7 +2,7 @@
 # @Author: izzy
 # @Date:   2019-12-06T20:30:37+00:00
 # @Last modified by:   izzy
-# @Last modified time: 2020-01-06T10:21:09+00:00
+# @Last modified time: 2020-01-06T08:11:38+00:00
 
 
 @section('content')
@@ -11,24 +11,28 @@
         <div class="col-md-8 col-mid-offset-2">
             <div class="card">
                 <div class="card-header">
-                  {{ $weight->date }}
+                  {{ $meal->mealType }} on {{ $meal->date }}
                 </div>
                 <div class="card-body">
-                  <table id="table-weight" class="table table-hover">
+                  <table id="table-meal" class="table table-hover">
                     <tbody>
-                    <tr>
-                      <td>Weight</td>
-                      <td>{{ $weight->value }} kg</td>
-                    </tr>
+                      <tr>
+                        <td>Meal</td>
+                        <td>{{ $meal->meal_type_id }}</td>
+                      </tr>
                       <tr>
                         <td>Date</td>
-                        <td>{{ $weight->date }}</td>
+                        <td>{{ $meal->date }}</td>
+                      </tr>
+                      <tr>
+                        <td>Time</td>
+                        <td>{{ $meal->time }}</td>
                       </tr>
                     </tbody>
                   </table>
-                  <a href="{{ route('weights.index') }}" class="btn btn-default">Back</a>
-                  <a href="{{ route('weights.edit', $weight->id) }}" class="btn btn-warning">Edit</a>
-                  <form style="display:inline-block" method="POST" action="{{ route('weights.destroy', $weight->id) }}">
+                  <a href="{{ route('meals.index') }}" class="btn btn-default">Back</a>
+                  <a href="{{ route('meals.edit', $meal->id) }}" class="btn btn-warning">Edit</a>
+                  <form style="display:inline-block" method="POST" action="{{ route('meals.destroy', $meal->id) }}">
                     <input type="hidden" name="_method" value="DELETE">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <button type="submit" class="form-control btn btn-danger">Delete</>

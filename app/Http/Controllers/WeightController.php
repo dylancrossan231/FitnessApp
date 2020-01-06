@@ -2,7 +2,7 @@
 # @Author: izzy
 # @Date:   2019-12-03T11:51:49+00:00
 # @Last modified by:   izzy
-# @Last modified time: 2020-01-06T07:11:17+00:00
+# @Last modified time: 2020-01-06T10:32:10+00:00
 
 
 
@@ -37,7 +37,7 @@ class WeightController extends Controller
      */
     public function create()
     {
-        return view('user.weights.create');
+        return view('weights.create');
     }
 
     /**
@@ -60,7 +60,7 @@ class WeightController extends Controller
       $weight->user_id = $request->input('user_id');
       $weight->save();
 
-      return redirect()->route('user.weights.index');
+      return redirect()->route('weights.index');
     }
 
     /**
@@ -69,10 +69,10 @@ class WeightController extends Controller
      * @param  \App\Weight  $weight
      * @return \Illuminate\Http\Response
      */
-    public function show(Weight $weight)
+    public function show($id)
     {
       $weight = Weight::findOrFail($id);
-      return view('user.weights.show')->with([
+      return view('weights.show')->with([
         'weight' => $weight
       ]);
     }
@@ -83,10 +83,10 @@ class WeightController extends Controller
      * @param  \App\Weight  $weight
      * @return \Illuminate\Http\Response
      */
-    public function edit(Weight $weight)
+    public function edit($id)
     {
       $weight = Weight::findOrFail($id);
-      return view('user.weights.edit')->with([
+      return view('weights.edit')->with([
         'weight' => $weight
       ]);
     }
@@ -98,7 +98,7 @@ class WeightController extends Controller
      * @param  \App\Weight  $weight
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Weight $weight)
+    public function update(Request $request, $id)
     {
       $request->validate([
         'date' => 'required|date',
@@ -111,7 +111,7 @@ class WeightController extends Controller
       $weight->user_id = $request->input('user_id');
       $weight->save();
 
-      return redirect()->route('user.weights.index');
+      return redirect()->route('weights.index');
     }
 
     /**
@@ -120,10 +120,10 @@ class WeightController extends Controller
      * @param  \App\Weight  $weight
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Weight $weight)
+    public function destroy($id)
     {
       $weight = Weight::findOrFail($id);
       $weight->delete();
-      return redirect()->route('user.weights.index');
+      return redirect()->route('weights.index');
     }
 }
