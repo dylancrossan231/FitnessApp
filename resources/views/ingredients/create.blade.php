@@ -2,7 +2,7 @@
 # @Author: izzy
 # @Date:   2019-12-06T20:30:37+00:00
 # @Last modified by:   izzy
-# @Last modified time: 2019-12-15T21:04:57+00:00
+# @Last modified time: 2020-01-06T11:13:03+00:00
 
 
 @section('content')
@@ -10,7 +10,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8 col-mid-offset-2">
             <div class="card">
-                <div class="card-header">Add new doctor</div>
+                <div class="card-header">Add new ingredient</div>
                 <div class="card-body">
                     @if ($errors->any())
                     <div class="alert alert-danger">
@@ -21,25 +21,49 @@
                         </ul>
                     </div>
                     @endif
-                    <form method="POST" action="{{ route('admin.doctors.store') }}">
+                    <form method="POST" action="{{ route('ingredients.store') }}">
                       <input type="hidden" name="_token" value="{{ csrf_token() }}">
                       <div class="form-group">
-                        <label for="user_id">User ID</label>
-                        <input type="text" class="form-control" id="user_id" name="user_id" value="{{ old('user_id') }}"/>
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}"/>
                       </div>
                       <div class="form-group">
-                        <label for="address">Address</label>
-                        <input type="text" class="form-control" id="address" name="address" value="{{ old('address') }}"/>
+                        <label for="unit">Unit</label>
+                        <input type="text" class="form-control" id="unit" name="unit" value="{{ old('unit') }}"/>
                       </div>
                       <div class="form-group">
-                        <label for="phone">Phone number</label>
-                        <input type="text" class="form-control" id="phone" name="phone" value="{{ old('phone') }}"/>
+                        <label for="energy_kj">Energy (kJ)</label>
+                        <input type="text" class="form-control" id="energy_kj" name="energy_kj" value="{{ old('energy_kj') }}"/>
                       </div>
                       <div class="form-group">
-                        <label for="start">Start date</label>
-                        <input type="text" class="form-control" id="start" name="start" value="{{ old('start') }}"/>
+                        <label for="energy_kcal">Energy (kcal)</label>
+                        <input type="text" class="form-control" id="energy_kcal" name="energy_kcal" value="{{ old('energy_kcal') }}"/>
                       </div>
-                      <a href="{{ route('admin.doctors.index') }}" class="btn btn-link">Cancel</a>
+                      <div class="form-group">
+                        <label for="protein">Protein</label>
+                        <input type="text" class="form-control" id="protein" name="protein" value="{{ old('protein') }}"/>
+                      </div>
+                      <div class="form-group">
+                        <label for="carbs">Carbohydrates</label>
+                        <input type="text" class="form-control" id="carbs" name="carbs" value="{{ old('carbs') }}"/>
+                      </div>
+                      <div class="form-group">
+                        <label for="sugar">Sugar</label>
+                        <input type="text" class="form-control" id="sugar" name="sugar" value="{{ old('sugar') }}"/>
+                      </div>
+                      <div class="form-group">
+                        <label for="fat">Fat</label>
+                        <input type="text" class="form-control" id="fat" name="fat" value="{{ old('fat') }}"/>
+                      </div>
+                      <div class="form-group">
+                        <label for="saturated_fat">Saturated fat</label>
+                        <input type="text" class="form-control" id="saturated_fat" name="saturated_fat" value="{{ old('saturated_fat') }}"/>
+                      </div>
+                      <div class="form-group">
+                        <label for="fiber">Fiber</label>
+                        <input type="text" class="form-control" id="fiber" name="fiber" value="{{ old('fiber') }}"/>
+                      </div>
+                      <a href="{{ route('ingredients.index') }}" class="btn btn-link">Cancel</a>
                       <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>

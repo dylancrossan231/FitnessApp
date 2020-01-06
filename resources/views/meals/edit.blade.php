@@ -2,7 +2,7 @@
 # @Author: izzy
 # @Date:   2019-12-06T20:30:37+00:00
 # @Last modified by:   izzy
-# @Last modified time: 2020-01-06T08:14:09+00:00
+# @Last modified time: 2020-01-06T10:52:42+00:00
 
 
 @section('content')
@@ -29,8 +29,12 @@
                         <input type="text" class="form-control" id="meal_type_id" name="meal_type_id" value="{{ old('meal_type_id', $meal->meal_type_id) }}"/>
                       </div>
                       <div class="form-group">
-                        <label for="address">Address</label>
-                        <input type="text" class="form-control" id="address" name="address" value="{{ old('address', $meal->address) }}"/>
+                        <label for="date">Date</label>
+                        <input type="text" class="form-control" id="date" name="date" value="{{ old('date', $meal->date) }}"/>
+                      </div>
+                      <div class="form-group">
+                        <label for="time">Time</label>
+                        <input type="text" class="form-control" id="time" name="time" value="{{ old('time', $meal->time) }}"/>
                       </div>
                       <a href="{{ route('meals.index') }}" class="btn btn-link">Cancel</a>
                       <button type="submit" class="btn btn-primary">Submit</button>

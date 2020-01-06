@@ -2,7 +2,7 @@
 # @Author: izzy
 # @Date:   2019-12-06T20:30:37+00:00
 # @Last modified by:   izzy
-# @Last modified time: 2019-12-15T21:04:57+00:00
+# @Last modified time: 2020-01-06T10:54:30+00:00
 
 
 @section('content')
@@ -10,7 +10,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8 col-mid-offset-2">
             <div class="card">
-                <div class="card-header">Add new doctor</div>
+                <div class="card-header">Add new meal</div>
                 <div class="card-body">
                     @if ($errors->any())
                     <div class="alert alert-danger">
@@ -21,25 +21,21 @@
                         </ul>
                     </div>
                     @endif
-                    <form method="POST" action="{{ route('admin.doctors.store') }}">
+                    <form method="POST" action="{{ route('meals.store') }}">
                       <input type="hidden" name="_token" value="{{ csrf_token() }}">
                       <div class="form-group">
-                        <label for="user_id">User ID</label>
-                        <input type="text" class="form-control" id="user_id" name="user_id" value="{{ old('user_id') }}"/>
+                        <label for="meal_type_id">Meal</label>
+                        <input type="text" class="form-control" id="meal_type_id" name="meal_type_id" value="{{ old('meal_type_id') }}"/>
                       </div>
                       <div class="form-group">
-                        <label for="address">Address</label>
-                        <input type="text" class="form-control" id="address" name="address" value="{{ old('address') }}"/>
+                        <label for="date">Date</label>
+                        <input type="text" class="form-control" id="date" name="date" value="{{ old('date') }}"/>
                       </div>
                       <div class="form-group">
-                        <label for="phone">Phone number</label>
-                        <input type="text" class="form-control" id="phone" name="phone" value="{{ old('phone') }}"/>
+                        <label for="time">Time</label>
+                        <input type="text" class="form-control" id="time" name="time" value="{{ old('time') }}"/>
                       </div>
-                      <div class="form-group">
-                        <label for="start">Start date</label>
-                        <input type="text" class="form-control" id="start" name="start" value="{{ old('start') }}"/>
-                      </div>
-                      <a href="{{ route('admin.doctors.index') }}" class="btn btn-link">Cancel</a>
+                      <a href="{{ route('meals.index') }}" class="btn btn-link">Cancel</a>
                       <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>

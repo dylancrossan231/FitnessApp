@@ -2,7 +2,7 @@
 # @Author: izzy
 # @Date:   2020-01-06T06:01:59+00:00
 # @Last modified by:   izzy
-# @Last modified time: 2020-01-06T07:39:51+00:00
+# @Last modified time: 2020-01-06T11:00:43+00:00
 
 
 
@@ -11,21 +11,35 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
-                  @if (count($meals) === 0)
-                  <p>There are no meals to display.</p>
+                  @if (count($ingredients) === 0)
+                  <p>There are no ingredients to display.</p>
                   @else
-                  <table id="table-meals" class="table table-hover">
+                  <table id="table-ingredients" class="table table-hover">
                     <thead>
-                      <th>Meal</th>
-                      <th>Date</th>
-                      <th>Time</th>
+                      <th>Name</th>
+                      <th>Unit</th>
+                      <th>Energy (kJ)</th>
+                      <th>Energy (kcal)</th>
+                      <th>Protein</th>
+                      <th>Carbohydrates</th>
+                      <th>Sugar</th>
+                      <th>Fat</th>
+                      <th>Saturated fat</th>
+                      <th>Fiber</th>
                     </thead>
                     <tbody>
-                      @foreach ($meals as $meal)
-                      <tr data id="{{ $meal->id }}">
-                        <td>{{ $meal->meal_type_id }}</td>
-                        <td>{{ $meal->date }}</td>
-                        <td>{{ $meal->time }}</td>
+                      @foreach ($ingredients as $ingredient)
+                      <tr data id="{{ $ingredient->id }}">
+                        <td>{{ $ingredient->name }}</td>
+                        <td>{{ $ingredient->unit }}</td>
+                        <td>{{ $ingredient->energy_kj }}</td>
+                        <td>{{ $ingredient->energy_kcal }}</td>
+                        <td>{{ $ingredient->protein }}</td>
+                        <td>{{ $ingredient->carbs }}</td>
+                        <td>{{ $ingredient->sugar }}</td>
+                        <td>{{ $ingredient->fat }}</td>
+                        <td>{{ $ingredient->saturated_fat }}</td>
+                        <td>{{ $ingredient->fiber }}</td>
                         <td></td>
                       </tr>
                       @endforeach
