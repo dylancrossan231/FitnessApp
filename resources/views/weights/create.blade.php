@@ -32,6 +32,10 @@
                         <label for="date">Date</label>
                         <input type=date" class="form-control" id="date" name="date" value="{{ old('date') }}"/>
                       </div>
+                      <div class="form-group">
+                        <label for="user_id">User ID</label>
+                        <input type="text" class="form-control" id="user_id" name="user_id" value="{{ old('user_id') }}"/>
+                      </div>
                       <a href="{{ route('weights.index') }}" class="btn btn-link">Cancel</a>
                       <button type="submit" class="btn btn-primary">Submit</button>
                     </form>

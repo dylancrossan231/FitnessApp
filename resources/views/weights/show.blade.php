@@ -24,6 +24,10 @@
                         <td>Date</td>
                         <td>{{ $weight->date }}</td>
                       </tr>
+                      <tr>
+                        <td>User ID</td>
+                        <td>{{ $weight->user_id }}</td>
+                      </tr>
                     </tbody>
                   </table>
                   <a href="{{ route('weights.index') }}" class="btn btn-default">Back</a>

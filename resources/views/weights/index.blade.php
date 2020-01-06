@@ -30,6 +30,7 @@
                       <tr data id="{{ $weight->id }}">
                         <td>{{ $weight->value }} kg</td>
                         <td>{{ $weight->date }}</td>
+                        <td>{{ $weight->user_id }}</td>
                         <td>
                           <a href="{{ route('weights.show', $weight->id) }}" class="btn btn-default">View</a>
                           <a href="{{ route('weights.edit', $weight->id) }}" class="btn btn-warning">Edit</a>

@@ -37,7 +37,6 @@
                                     Macronutrients
                                    </h2>
                                      @foreach($product['calcNutrition']['calcNutrients'] as $nutritional)
-                                    {{dd($product)}}
                                        <p>Nutritional Info  :  {{ $nutritional['name']}}</p>
                                        <p>Per 100g  :  {{ $nutritional['valuePer100']}}g</p>
 

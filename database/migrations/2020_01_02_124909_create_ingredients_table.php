@@ -33,6 +33,7 @@ class CreateIngredientsTable extends Migration
             $table->decimal('fat', 4, 1);
             $table->decimal('saturated_fat', 4, 1);
             $table->decimal('fiber', 4, 1);
+            $table->decimal('salt',4,1);
             $table->boolean('is_product');
             $table->timestamps();
         });

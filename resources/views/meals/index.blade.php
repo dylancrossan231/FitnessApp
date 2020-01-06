@@ -27,7 +27,7 @@
                     <tbody>
                       @foreach ($meals as $meal)
                       <tr data id="{{ $meal->id }}">
-                        <td>{{ $meal->meal_type_id }}</td>
+                        <td>{{  }}</td>
                         <td>{{ $meal->date }}</td>
                         <td>{{ $meal->time }}</td>
                         <td>

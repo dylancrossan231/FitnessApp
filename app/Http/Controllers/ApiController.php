@@ -80,38 +80,38 @@ public function create($id)
   $response=$response->getBody();
   $response = json_decode($response, true);
   
-  //dd($response);
+  $product = $response['products'][0];
+  
 //  return $response;
 
 
            return view('calories.create')->with([
-             'response'=>$response]);
+             'product'=>$product]);
 
 
 }
 
 public function store(Request $request)
 {
-    $storeProduct = new Ingredient();
-    $products = $request->get('array');
+ 
+  
+  $ingredient = new Ingredient();
+  $ingredient->name = $request->input("name");
+  $ingredient->unit = $request->input("unit");
+  $ingredient->energy_kj = $request->input("Energy(kJ)");
+  $ingredient->energy_kcal = $request->input("Energy(kcal)");
+  $ingredient->protein = $request->input("Protein(g)");
+  $ingredient->carbs = $request->input("Carbohydrate(g)");
+  $ingredient->sugar = $request->input("Sugars(g)");
+  $ingredient->fat = $request->input("Fat(g)");
+  $ingredient->saturated_fat = $request->input("Saturates(g)");
+  $ingredient->fiber = $request->input("Fibre(g)");
+  $ingredient->salt = $request->input("Salt(g)");
 
-    for($i = 0; $i < count($product); $i++) {
-      $storeProduct->id = $product[$i];
-      $storeProduct->name = "Test";
-      $storeProduct->api_id = 51148744;
-      $storeProduct->unit = kg;
-      $storeProduct->energy_kJ = 100;
-      $storeProduct->energy_kcal = 20;
-      $storeProduct->protein = 5;
-      $storeProduct->carbs = 4;
-      $storeProduct->sugar = 3;
-      $storeProduct->fat = 2;
-      $storeProduct->saturated_fat = 1;
-      $storeProduct->fiber = 0;
-      $storeProduct->is_product = 1;
+  $ingredient->save();
 
-      $storeProduct->save();
-    }
+  return redirect()->route('ingredients.index');
+    
 }
 
 
