@@ -31,13 +31,13 @@ Route::get('/apiview/search/show/product/{TPNB}', 'ApiController@show')->name('a
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/user/profile', 'User\HomeController@index')->name('user.home');
 
-Route::get('/user/weights', 'User\WeightController@index')->name('user.weights.index');
-Route::get('/user/weights/create', 'User\WeightController@create')->name('user.weights.create');
-Route::get('/user/weights/{id}', 'User\WeightController@show')->name('user.weights.show');
-Route::post('/user/weights/store', 'User\WeightController@store')->name('user.weights.store');
-Route::get('/user/weights/{id}/edit', 'User\WeightController@edit')->name('user.weights.edit');
-Route::put('/user/weights/{id}', 'User\WeightController@update')->name('user.weights.update');
-Route::delete('/user/weights/{id}', 'User\WeightController@destroy')->name('user.weights.destroy');
+Route::get('/weights', 'WeightController@index')->name('weights.index');
+Route::get('/weights/create', 'WeightController@create')->name('weights.create');
+Route::get('/weights/{id}', 'WeightController@show')->name('weights.show');
+Route::post('/weights/store', 'WeightController@store')->name('weights.store');
+Route::get('/weights/{id}/edit', 'WeightController@edit')->name('weights.edit');
+Route::put('/weights/{id}', 'WeightController@update')->name('weights.update');
+Route::delete('/weights/{id}', 'WeightController@destroy')->name('weights.destroy');
 
 Route::get('/meals', 'MealController@index')->name('meals.index');
 Route::get('/meals/create', 'MealController@create')->name('meals.create');
