@@ -2,7 +2,7 @@
 # @Author: izzy
 # @Date:   2020-01-06T13:31:31+00:00
 # @Last modified by:   izzy
-# @Last modified time: 2020-01-06T15:59:33+00:00
+# @Last modified time: 2020-01-06T17:26:12+00:00
 
 
 
@@ -22,15 +22,17 @@
                         </ul>
                     </div>
                     @endif
-                    <form method="POST" action="{{ route('ingredients.store') }}">
+                    @foreach($response['products'] as $product)
+                    <form method="POST" action="{{ route('apisearch.store') }}">
                       <input type="hidden" name="_token" value="{{ csrf_token() }}">
                       <div class="form-group">
                         <label for="name">Name</label>
-                        <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}"/>
+                        <input type="text" class="form-control" id="name" name="name" value="{{ old('name', $product['description']) }}"/>
                       </div>
+                      @endforeach
                       <div class="form-group">
                         <label for="unit">Unit</label>
-                        <input type="text" class="form-control" id="unit" name="unit" value="{{ old('unit') }}"/>
+                        <input type="text" class="form-control" id="unit" name="unit" value="{{ old('unit',) }}"/>
                       </div>
                       <div class="form-group">
                         <label for="energy_kj">Energy (kJ)</label>
@@ -67,6 +69,9 @@
                       <a href="{{ route('ingredients.index') }}" class="btn btn-link">Cancel</a>
                       <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
+
+
+
                 </div>
             </div>
         </div>

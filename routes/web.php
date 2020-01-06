@@ -1,6 +1,6 @@
 <?php
 # @Date:   2019-10-29T14:03:53+00:00
-# @Last modified time: 2020-01-06T07:58:39+00:00
+# @Last modified time: 2020-01-06T18:04:58+00:00
 
 
 
@@ -25,7 +25,9 @@ Auth::routes();
 Route::get('/manualcalorieadd', 'ManualcalorieController@index')->name('manualcalorieadd.index');
 Route::get('/apiview', 'ApiController@index')->name('apiview.index');
 Route::post('/apiview/search', 'ApiController@search')->name('apiview.search');
-Route::get('/apiview/search/show/product/{TPNB}', 'ApiController@show')->name('apisearch.show');
+Route::get('/apiview/search/show/product/{id}', 'ApiController@show')->name('apisearch.show');
+Route::get('/apiview/product/create/{id}', 'ApiController@create')->name('calories.create');
+Route::post('/apiview/store', 'ApiController@store')->name('apisearch.store');
 
 
 Route::get('/home', 'HomeController@index')->name('home');
