@@ -1,9 +1,17 @@
 <?php
+# @Author: izzy
+# @Date:   2019-12-03T11:51:49+00:00
+# @Last modified by:   izzy
+# @Last modified time: 2020-01-06T05:51:13+00:00
+
+
+
 
 namespace App\Http\Controllers;
 
-use App\Ingredient;
 use Illuminate\Http\Request;
+use App\Ingredient;
+
 
 class IngredientController extends Controller
 {

@@ -1,9 +1,19 @@
 <?php
+# @Author: izzy
+# @Date:   2019-12-03T11:51:49+00:00
+# @Last modified by:   izzy
+# @Last modified time: 2020-01-06T08:14:40+00:00
+
+
+
 
 namespace App\Http\Controllers;
 
-use App\Meal;
 use Illuminate\Http\Request;
+use App\Meal;
+use App\User;
+use App\mealType;
+
 
 class MealController extends Controller
 {
@@ -14,7 +24,11 @@ class MealController extends Controller
      */
     public function index()
     {
-        //
+      $meals = Meal::all();
+
+      return view('meals.index')->with([
+        'meals' => $meals
+      ]);
     }
 
     /**
@@ -24,7 +38,7 @@ class MealController extends Controller
      */
     public function create()
     {
-        //
+        return view('meals.create');
     }
 
     /**
@@ -35,7 +49,21 @@ class MealController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $request->validate([
+        'date' => 'required|date',
+        'time' => 'required',
+        'user_id' => 'required|alpha_num|max:3',
+        'meal_type_id' => 'required|alpha_num|max:3'
+      ]);
+
+      $meal = new Meal();
+      $meal->date = $request->input('date');
+      $meal->time = $request->input('time');
+      $meal->user_id = $request->input('user_id');
+      $meal->meal_type_id = $request->input('user_id');
+      $meal->save();
+
+      return redirect()->route('meals.index');
     }
 
     /**
@@ -44,9 +72,12 @@ class MealController extends Controller
      * @param  \App\Meal  $meal
      * @return \Illuminate\Http\Response
      */
-    public function show(Meal $meal)
+    public function show($id)
     {
-        //
+      $meal = Meal::findOrFail($id);
+      return view('meals.show')->with([
+        'meal' => $meal
+      ]);
     }
 
     /**
@@ -55,9 +86,12 @@ class MealController extends Controller
      * @param  \App\Meal  $meal
      * @return \Illuminate\Http\Response
      */
-    public function edit(Meal $meal)
+    public function edit($id)
     {
-        //
+      $meal = Meal::findOrFail($id);
+      return view('meals.edit')->with([
+        'meal' => $meal
+      ]);
     }
 
     /**
@@ -67,9 +101,22 @@ class MealController extends Controller
      * @param  \App\Meal  $meal
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Meal $meal)
+    public function update(Request $request, $id)
     {
-        //
+      $request->validate([
+        'date' => 'required|date',
+        'time' => 'required',
+        'user_id' => 'required|alpha_num|max:3',
+        'meal_type_id' => 'required|alpha_num|max:3'
+      ]);
+
+      $meal->date = $request->input('date');
+      $meal->time = $request->input('time');
+      $meal->user_id = $request->input('user_id');
+      $meal->meal_type_id = $request->input('user_id');
+      $meal->save();
+
+      return redirect()->route('meals.index');
     }
 
     /**
@@ -78,8 +125,10 @@ class MealController extends Controller
      * @param  \App\Meal  $meal
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Meal $meal)
+    public function destroy($id)
     {
-        //
+      $meal = Meal::findOrFail($id);
+      $meal->delete();
+      return redirect()->route('meals.index');
     }
 }
