@@ -29,6 +29,18 @@
                         <label for="name">Name</label>
                         <input type="text" class="form-control" id="name" name="name" value="{{ old('name', $product['description']) }}"/>
                       </div>
+                      @foreach($product['calcNutrition']['calcNutrients'] as $nutritional)
+
+                      <p>Nutritional Info  :  {{ $nutritional['name']}}g</p>
+                      <p>Per 100g  :  {{ $nutritional['valuePer100']}}g</p>
+
+                      <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" value="{{ old('name', $nutritional['name']) }}"/>
+                      </div>
+                      
+
+                              @endforeach
                       @endforeach
                       <div class="form-group">
                         <label for="unit">Unit</label>
