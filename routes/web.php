@@ -25,8 +25,8 @@ Auth::routes();
 Route::get('/manualcalorieadd', 'ManualcalorieController@index')->name('manualcalorieadd.index');
 Route::get('/apiview', 'ApiController@index')->name('apiview.index');
 Route::post('/apiview/search', 'ApiController@search')->name('apiview.search');
-Route::get('/apiview/search/show/product/{id}', 'ApiController@show')->name('apisearch.show');
-Route::get('/apiview/product/create/{id}', 'ApiController@create')->name('calories.create');
+Route::get('/apiview/search/show/product/{TPNB}', 'ApiController@show')->name('apisearch.show');
+Route::get('/apiview/product/create/{TPNB}', 'ApiController@create')->name('calories.create');
 Route::post('/apiview/store', 'ApiController@store')->name('apisearch.store');
 
 

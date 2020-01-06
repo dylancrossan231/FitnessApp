@@ -145,3 +145,6 @@ return view('calories.searchcalories')->with([
 
 
 }
+
+
+
