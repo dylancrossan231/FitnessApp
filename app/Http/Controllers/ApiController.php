@@ -1,6 +1,6 @@
 <?php
 # @Date:   2019-11-12T19:03:11+00:00
-# @Last modified time: 2020-01-06T18:13:42+00:00
+# @Last modified time: 2020-01-06T18:19:22+00:00
 
 
 
@@ -44,7 +44,7 @@ public function show($id)
 
   $client = new Client();
 
-  $response =$client->request('GET', 'https://dev.tescolabs.com/product/?id='.$id.'', [
+  $response =$client->request('GET', 'https://dev.tescolabs.com/product/?tpnb='.$id.'', [
       'headers' => [
           'Ocp-Apim-Subscription-Key'=>'a3c51c289be148ac9492336f4b6dadff'
           //env('API_KEY')
@@ -69,7 +69,7 @@ public function create($id)
 
   $client = new Client();
 
-  $response =$client->request('GET', 'https://dev.tescolabs.com/product/?id='.$id.'', [
+  $response =$client->request('GET', 'https://dev.tescolabs.com/product/?tpnb='.$id.'', [
       'headers' => [
           'Ocp-Apim-Subscription-Key'=>'a3c51c289be148ac9492336f4b6dadff'
           //env('API_KEY')

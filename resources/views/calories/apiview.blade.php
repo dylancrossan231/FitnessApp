@@ -2,7 +2,7 @@
 # @Author: izzy
 # @Date:   2020-01-06T04:31:30+00:00
 # @Last modified by:   izzy
-# @Last modified time: 2020-01-06T18:09:23+00:00
+# @Last modified time: 2020-01-06T18:19:20+00:00
 
 
 
@@ -23,11 +23,9 @@
 
 
     @foreach($response['products'] as $product)
-
         <h2>
         Product:
       </h2> {{ $product['description'] }}
-             <p>ID:{{ $id = $product['id'] }}</p>
              <p>GTIN:{{ $product['gtin'] }}</p>
              <p>TPNB:{{ $product['tpnb'] }}</p>
              <p>TPNC:{{ $product['tpnc'] }}</p>

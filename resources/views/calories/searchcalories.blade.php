@@ -2,7 +2,7 @@
 # @Author: izzy
 # @Date:   2020-01-06T13:31:31+00:00
 # @Last modified by:   izzy
-# @Last modified time: 2020-01-06T18:17:43+00:00
+# @Last modified time: 2020-01-06T18:19:19+00:00
 
 
 
@@ -14,7 +14,7 @@
 
     <h1>{{$product['name']}}</h1>
     <h3>Unit Amount: {{$product['UnitQuantity']}}</h3>
-    <h3>TPNB: {{$TPNB =$product['tpnb']}}</h3>
+    <h3>TPNB: {{ $TPNB =$product['tpnb']}}</h3>
     <h3>Unit Amount: {{$product['image']}}</h3>
 
 
