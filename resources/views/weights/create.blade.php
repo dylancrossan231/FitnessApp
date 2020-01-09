@@ -2,7 +2,7 @@
 # @Author: izzy
 # @Date:   2019-12-06T20:30:37+00:00
 # @Last modified by:   izzy
-# @Last modified time: 2020-01-06T10:20:55+00:00
+# @Last modified time: 2020-01-09T11:10:56+00:00
 
 
 @section('content')
@@ -24,17 +24,17 @@
                     <form method="POST" action="{{ route('weights.store') }}">
                       <input type="hidden" name="_token" value="{{ csrf_token() }}">
                       <div class="form-group">
+                        <label for="user_id">User ID</label>
+                        <input type="text" class="form-control" id="user_id" name="user_id" value="{{ old('user_id') }}"/>
+                      </div>
+                      <div class="form-group">
                         <label for="value">Weight</label>
                         <input type="text" class="form-control" id="value" name="value" value="{{ old('value') }}"/>
                         kg
                       </div>
                       <div class="form-group">
                         <label for="date">Date</label>
-                        <input type=date" class="form-control" id="date" name="date" value="{{ old('date') }}"/>
-                      </div>
-                      <div class="form-group">
-                        <label for="user_id">User ID</label>
-                        <input type="text" class="form-control" id="user_id" name="user_id" value="{{ old('user_id') }}"/>
+                        <input type="date" class="form-control" id="date" name="date" value="{{ old('date') }}"/>
                       </div>
                       <a href="{{ route('weights.index') }}" class="btn btn-link">Cancel</a>
                       <button type="submit" class="btn btn-primary">Submit</button>

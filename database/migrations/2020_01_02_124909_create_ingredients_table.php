@@ -2,7 +2,7 @@
 # @Author: izzy
 # @Date:   2020-01-02T12:49:09+00:00
 # @Last modified by:   izzy
-# @Last modified time: 2020-01-06T05:37:27+00:00
+# @Last modified time: 2020-01-09T10:49:27+00:00
 
 
 
@@ -34,7 +34,7 @@ class CreateIngredientsTable extends Migration
             $table->decimal('saturated_fat', 4, 1);
             $table->decimal('fiber', 4, 1);
             $table->decimal('salt',4,1);
-            $table->boolean('is_product');
+            $table->boolean('is_product')->nullable();
             $table->timestamps();
         });
     }

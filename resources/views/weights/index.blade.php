@@ -2,7 +2,7 @@
 # @Author: izzy
 # @Date:   2020-01-06T13:31:31+00:00
 # @Last modified by:   izzy
-# @Last modified time: 2020-01-06T15:00:24+00:00
+# @Last modified time: 2020-01-09T11:11:57+00:00
 
 
 
@@ -22,15 +22,16 @@
                   @else
                   <table id="table-weights" class="table table-hover">
                     <thead>
+                      <th>User ID</th>
                       <th>Weight</th>
                       <th>Date</th>
                     </thead>
                     <tbody>
                       @foreach ($weights as $weight)
                       <tr data id="{{ $weight->id }}">
+                        <td>{{ $weight->user_id }}</td>
                         <td>{{ $weight->value }} kg</td>
                         <td>{{ $weight->date }}</td>
-                        <td>{{ $weight->user_id }}</td>
                         <td>
                           <a href="{{ route('weights.show', $weight->id) }}" class="btn btn-default">View</a>
                           <a href="{{ route('weights.edit', $weight->id) }}" class="btn btn-warning">Edit</a>

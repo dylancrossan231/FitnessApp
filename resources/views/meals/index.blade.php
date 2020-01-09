@@ -2,7 +2,7 @@
 # @Author: izzy
 # @Date:   2020-01-06T13:31:31+00:00
 # @Last modified by:   izzy
-# @Last modified time: 2020-01-06T13:35:25+00:00
+# @Last modified time: 2020-01-09T11:00:49+00:00
 
 
 
@@ -20,6 +20,7 @@
                   @else
                   <table id="table-meals" class="table table-hover">
                     <thead>
+                      <th>User ID</th>
                       <th>Meal</th>
                       <th>Date</th>
                       <th>Time</th>
@@ -27,7 +28,8 @@
                     <tbody>
                       @foreach ($meals as $meal)
                       <tr data id="{{ $meal->id }}">
-                        <td>{{  }}</td>
+                        <td>{{ $meal->user_id }}</td>
+                        <td>{{ $meal->meal_type_id }}</td>
                         <td>{{ $meal->date }}</td>
                         <td>{{ $meal->time }}</td>
                         <td>

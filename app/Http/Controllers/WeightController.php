@@ -2,7 +2,7 @@
 # @Author: izzy
 # @Date:   2019-12-03T11:51:49+00:00
 # @Last modified by:   izzy
-# @Last modified time: 2020-01-06T10:32:10+00:00
+# @Last modified time: 2020-01-09T11:09:31+00:00
 
 
 
@@ -100,6 +100,8 @@ class WeightController extends Controller
      */
     public function update(Request $request, $id)
     {
+      $weight = Weight::findOrFail($id);
+
       $request->validate([
         'date' => 'required|date',
         'value' => 'required|max:5',

@@ -2,7 +2,7 @@
 # @Author: izzy
 # @Date:   2019-12-03T11:51:49+00:00
 # @Last modified by:   izzy
-# @Last modified time: 2020-01-06T10:43:02+00:00
+# @Last modified time: 2020-01-09T11:05:49+00:00
 
 
 
@@ -59,7 +59,7 @@ class IngredientController extends Controller
         'fat' => 'required',
         'saturated_fat' => 'required',
         'fiber' => 'required',
-        'is_product' => 'required'
+        'is_product' => 'nullable'
       ]);
 
       $ingredient = new Ingredient();
@@ -118,6 +118,8 @@ class IngredientController extends Controller
      */
     public function update(Request $request, $id)
     {
+      $ingredient = Ingredient::findOrFail($id);
+
       $request->validate([
         'name' => 'required|max:25',
         'unit' => 'required|max:3',
@@ -129,7 +131,7 @@ class IngredientController extends Controller
         'fat' => 'required',
         'saturated_fat' => 'required',
         'fiber' => 'required',
-        'is_product' => 'required'
+        'is_product' => 'nullable'
       ]);
 
       $ingredient->name = $request->input('name');

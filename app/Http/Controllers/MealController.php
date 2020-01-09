@@ -2,7 +2,7 @@
 # @Author: izzy
 # @Date:   2019-12-03T11:51:49+00:00
 # @Last modified by:   izzy
-# @Last modified time: 2020-01-06T08:14:40+00:00
+# @Last modified time: 2020-01-09T11:06:07+00:00
 
 
 
@@ -53,7 +53,7 @@ class MealController extends Controller
         'date' => 'required|date',
         'time' => 'required',
         'user_id' => 'required|alpha_num|max:3',
-        'meal_type_id' => 'required|alpha_num|max:3'
+        'meal_type_id' => 'required|alpha_num'
       ]);
 
       $meal = new Meal();
@@ -103,11 +103,13 @@ class MealController extends Controller
      */
     public function update(Request $request, $id)
     {
+      $meal = Meal::findOrFail($id);
+
       $request->validate([
         'date' => 'required|date',
         'time' => 'required',
         'user_id' => 'required|alpha_num|max:3',
-        'meal_type_id' => 'required|alpha_num|max:3'
+        'meal_type_id' => 'required|alpha_num'
       ]);
 
       $meal->date = $request->input('date');

@@ -1,4 +1,11 @@
 @extends('layouts.app')
+# @Author: izzy
+# @Date:   2020-01-06T13:31:31+00:00
+# @Last modified by:   izzy
+# @Last modified time: 2020-01-09T11:14:03+00:00
+
+
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -18,12 +25,16 @@
                     <form method="POST" action="{{ route('meals.store') }}">
                       <input type="hidden" name="_token" value="{{ csrf_token() }}">
                       <div class="form-group">
+                        <label for="user_id">User ID</label>
+                        <input type="text" class="form-control" id="user_id" name="user_id" value="{{ old('user_id') }}"/>
+                      </div>
+                      <div class="form-group">
                         <label for="meal_type_id">Meal</label>
                         <input type="text" class="form-control" id="meal_type_id" name="meal_type_id" value="{{ old('meal_type_id') }}"/>
                       </div>
                       <div class="form-group">
                         <label for="date">Date</label>
-                        <input type="text" class="form-control" id="date" name="date" value="{{ old('date') }}"/>
+                        <input type="date" class="form-control" id="date" name="date" value="{{ old('date') }}"/>
                       </div>
                       <div class="form-group">
                         <label for="time">Time</label>

@@ -2,7 +2,7 @@
 # @Author: izzy
 # @Date:   2019-12-03T11:51:49+00:00
 # @Last modified by:   izzy
-# @Last modified time: 2020-01-06T10:45:35+00:00
+# @Last modified time: 2020-01-09T11:08:38+00:00
 
 
 
@@ -62,6 +62,8 @@ class RecipeController extends Controller
       $recipe->portions = $request->input('portions');
 
       $recipe->save();
+
+      return redirect()->route('recipes.index');
     }
 
     /**
@@ -101,6 +103,8 @@ class RecipeController extends Controller
      */
     public function update(Request $request, $id)
     {
+      $recipe = Recipe::findOrFail($id);
+
       $request->validate([
         'name' => 'required|max:25',
         'amount' => 'required',
@@ -112,6 +116,8 @@ class RecipeController extends Controller
       $recipe->portions = $request->input('portions');
 
       $recipe->save();
+
+      return redirect()->route('recipes.index');
     }
 
     /**

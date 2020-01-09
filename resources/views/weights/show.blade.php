@@ -2,7 +2,7 @@
 # @Author: izzy
 # @Date:   2019-12-06T20:30:37+00:00
 # @Last modified by:   izzy
-# @Last modified time: 2020-01-06T10:21:09+00:00
+# @Last modified time: 2020-01-09T11:11:30+00:00
 
 
 @section('content')
@@ -17,16 +17,16 @@
                   <table id="table-weight" class="table table-hover">
                     <tbody>
                     <tr>
+                      <td>User ID</td>
+                      <td>{{ $weight->user_id }}</td>
+                    </tr>
+                    <tr>
                       <td>Weight</td>
                       <td>{{ $weight->value }} kg</td>
                     </tr>
                       <tr>
                         <td>Date</td>
                         <td>{{ $weight->date }}</td>
-                      </tr>
-                      <tr>
-                        <td>User ID</td>
-                        <td>{{ $weight->user_id }}</td>
                       </tr>
                     </tbody>
                   </table>
