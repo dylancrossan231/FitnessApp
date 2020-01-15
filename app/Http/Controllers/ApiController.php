@@ -48,7 +48,6 @@ public function show($id)
       'headers' => [
           'Ocp-Apim-Subscription-Key'=>'a3c51c289be148ac9492336f4b6dadff'
           //env('API_KEY')
-
       ]
   ]);
 

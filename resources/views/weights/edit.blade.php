@@ -1,6 +1,5 @@
 @extends('layouts.app')
-# @Author: izzy
-# @Date:   2019-12-06T20:30:37+00:00
+06T20:30:37+00:00
 # @Last modified by:   izzy
 # @Last modified time: 2020-01-09T11:13:39+00:00
 

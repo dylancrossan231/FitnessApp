@@ -1,9 +1,4 @@
 <?php
-# @Author: izzy
-# @Date:   2019-12-03T11:51:49+00:00
-# @Last modified by:   izzy
-# @Last modified time: 2020-01-09T11:09:31+00:00
-
 
 
 
