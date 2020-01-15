@@ -24,14 +24,6 @@
                                      <p>TPNB:{{ $TPNB = $product['tpnb'] }}</p>
                                      <p>TPNC:{{ $product['tpnc'] }}</p>
                                      <p>BRAND:{{ $product['brand'] }}</p>
-                                     <form action="{{route('calories.create', $TPNB)}}" method="GET">
-                                       <div class="form-group">
-
-                                           <span class="form-group-btn">
-                                             <button type="submit" class="btn btn-primary">Add</button>
-                                             </span>
-                                          </div>
-                                     </form>
 
                                      <h2>
                                     Macronutrients
@@ -39,11 +31,14 @@
                                      @foreach($product['calcNutrition']['calcNutrients'] as $nutritional)
                                        <p>Nutritional Info  :  {{ $nutritional['name']}}</p>
                                        <p>Per 100g  :  {{ $nutritional['valuePer100']}}g</p>
+                                       <form action="{{route('calories.create', $TPNB)}}" method="GET">
+                                       <div class="form-group">
 
-
-
-
-
+                                           <span class="form-group-btn">
+                                             <button type="submit" class="btn btn-primary">Add</button>
+                                             </span>
+                                          </div>
+                                     </form>
                                      @endforeach
                             @endforeach
                     </div>

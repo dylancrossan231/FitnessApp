@@ -37,29 +37,39 @@ class ApiController extends Controller
 
 }
 
-public function show($id)
-{
+// public function show($id)
+// {
 
 
 
-  $client = new Client();
+//   $client = new Client();
 
-  $response =$client->request('GET', 'https://dev.tescolabs.com/product/?tpnb='.$id.'', [
-      'headers' => [
-          'Ocp-Apim-Subscription-Key'=>'a3c51c289be148ac9492336f4b6dadff'
-          //env('API_KEY')
-      ]
-  ]);
+//   $response =$client->request('GET', 'https://dev.tescolabs.com/product/?tpnb='.$id.'', [
+//       'headers' => [
+//           'Ocp-Apim-Subscription-Key'=>'a3c51c289be148ac9492336f4b6dadff'
+//           //env('API_KEY')
+//       ]
+//   ]);
 
-  $response=$response->getBody();
-  $response = json_decode($response, true);
- // dd($response);
-//  return $response;
+//   $response=$response->getBody();
+//   $response = json_decode($response, true);
+//  // dd($response);
+// //  return $response;
 
-           return view('calories.apisearchshowproduct')->with([
-             'response'=>$response]);
+//            return view('calories.apisearchshowproduct')->with([
+//              'response'=>$response]);
 
-}
+// BUTTON ON FRONT END
+//  <form action="{{route('apisearch.show', $TPNB)}}" method="GET">
+
+// <div class="form-group">
+
+//     <span class="form-group-btn">
+//       <button type="submit" class="btn btn-primary">View</button>
+//       </span>
+//   </div>
+// </form> 
+// }
 
 public function create($id)
 {
@@ -136,14 +146,45 @@ public function search(Request $request)
   $response = json_decode($response, true);
 
 
+  //dd($response);
+
+
+  foreach($response ['uk']['ghs']['products']['results'] as $product)
+
+  $TPNB =$product['tpnb'];
+
+
+  $clientShow = new Client();
+
+  $responseShow =$clientShow->request('GET', 'https://dev.tescolabs.com/product/?tpnb='.$TPNB.'', [
+      'headers' => [
+          'Ocp-Apim-Subscription-Key'=>'a3c51c289be148ac9492336f4b6dadff'
+          //env('API_KEY')
+      ]
+  ]);
+
+  $responseShow=$responseShow->getBody();
+  $responseShow = json_decode($responseShow, true);
+  $productinfo = $responseShow['products'][0];
+
+  
  // dd($response);
+//  return $response;
+
 
 return view('calories.searchcalories')->with([
-  'response'=>$response,'query'=> $query]);
+  'response'=>$response,'productinfo'=>$productinfo,'query'=> $query]);
+
+
+
+
+
+}
+
 }
 
 
-}
+
 
 
 

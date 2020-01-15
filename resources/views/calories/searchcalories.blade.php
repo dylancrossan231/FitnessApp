@@ -1,13 +1,9 @@
 @extends('layouts.app')
-# @Author: izzy
-# @Date:   2020-01-06T13:31:31+00:00
-# @Last modified by:   izzy
-# @Last modified time: 2020-01-06T18:19:19+00:00
-
-
-
 @section('content')
 <h1> Search Results for {{ $query }}  </h1>
+
+
+
 
     @foreach($response ['uk']['ghs']['products']['results'] as $product)
 
@@ -18,16 +14,29 @@
     <h3>Unit Amount: {{$product['image']}}</h3>
 
 
+                                  <h2>
+                                    Macronutrients
+                                   </h2>
+                                     @foreach($productinfo['calcNutrition']['calcNutrients'] as $nutritional)
+                                       <p>{{ $names = $nutritional['name']}} Per 100g  :  {{ $per100 = $nutritional['valuePer100']}}g</p>
+                                       
+                                     @endforeach
 
-<form action="{{route('apisearch.show', $TPNB)}}" method="GET">
+                                  
 
-  <div class="form-group">
 
-      <span class="form-group-btn">
-        <button type="submit" class="btn btn-primary">View</button>
-        </span>
-     </div>
-</form>
+                                     <form action="{{route('calories.create', $TPNB)}}" method="GET">
+                                       <div class="form-group">
+
+                                           <span class="form-group-btn">
+                                             <button type="submit" class="btn btn-primary">Add</button>
+                                             </span>
+                                          </div>
+                                     </form>
+
+  
+
+
 
     </br>
     </br>
