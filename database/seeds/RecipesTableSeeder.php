@@ -9,6 +9,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Recipe;
+use App\Ingredient;
 
 class RecipesTableSeeder extends Seeder
 {
@@ -19,12 +20,12 @@ class RecipesTableSeeder extends Seeder
      */
     public function run()
     {
-        $recipe = new Recipe();
 
+        $recipe = new Recipe();
         $recipe->name = 'Apple Pie';
         $recipe->amount = '1.1';
         $recipe->portions = 8;
-
         $recipe->save();
+
     }
 }

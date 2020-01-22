@@ -60,7 +60,7 @@ Route::delete('/ingredients/{id}', 'IngredientController@destroy')->name('ingred
 Route::get('/recipes', 'RecipeController@index')->name('recipes.index');
 Route::get('/recipes/create', 'RecipeController@create')->name('recipes.create');
 Route::get('/recipes/{id}', 'RecipeController@show')->name('recipes.show');
-Route::post('/recipes/store', 'RecipeController@store')->name('recipes.store');
+Route::post('/recipes/store/{id}', 'RecipeController@store')->name('recipes.store');
 Route::get('/recipes/{id}/edit', 'RecipeController@edit')->name('recipes.edit');
 Route::put('/recipes/{id}', 'RecipeController@update')->name('recipes.update');
 Route::delete('/recipes/{id}', 'RecipeController@destroy')->name('recipes.destroy');

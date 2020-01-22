@@ -34,7 +34,10 @@ class RecipeController extends Controller
      */
     public function create()
     {
-        return view('recipes.create');
+      $ingredients = Ingredient::all();
+        return view('recipes.create')->with([
+          'ingredients' => $ingredients
+        ]);
     }
 
     /**
@@ -43,7 +46,7 @@ class RecipeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
       $request->validate([
         'name' => 'required|max:25',
@@ -51,13 +54,17 @@ class RecipeController extends Controller
         'portions' => 'required'
       ]);
 
-      $recipe = new Recipe();
 
+
+      $recipe = new Recipe();
       $recipe->name = $request->input('name');
       $recipe->amount = $request->input('amount');
       $recipe->portions = $request->input('portions');
+      $recipe->save($request->all());
+      $recipe->ingredient()->attach([
+        $ingredient_id = $id
+    ]);      
 
-      $recipe->save();
 
       return redirect()->route('recipes.index');
     }
@@ -70,9 +77,11 @@ class RecipeController extends Controller
      */
     public function show($id)
     {
+      $ingredients = Ingredient::all();
       $recipe = Recipe::findOrFail($id);
       return view('recipes.show')->with([
-        'recipe' => $recipe
+        'recipe' => $recipe,
+        'ingredients' => $ingredients
       ]);
     }
 

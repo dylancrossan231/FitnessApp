@@ -171,7 +171,6 @@ public function search(Request $request)
  // dd($response);
 //  return $response;
 
-
 return view('calories.searchcalories')->with([
   'response'=>$response,'productinfo'=>$productinfo,'query'=> $query]);
 

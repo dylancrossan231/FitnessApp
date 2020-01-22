@@ -15,8 +15,30 @@
                         </ul>
                     </div>
                     @endif
-                    <form method="POST" action="{{ route('recipes.store') }}">
+                    <label for="ingredient">Ingredient</label>
+                                    <br/>
+                    <select name="ingredient_id">
+                                        @foreach ($ingredients as $ingredient)
+                                            <option 
+                                                value= {{ $ingredient->id  }} 
+                                                {{ (old('ingredient_id') == $ingredient->id) 
+                                                    ? "selected" 
+                                                    : ""   }}
+                                                 >{{$ingredient->name }}</option>
+
+                                                 @endforeach
+                                        
+                                    </select>
+
+                    <form method="POST" action="{{ route('recipes.store', $ingredient->id) }}">
+                    
+
                       <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+                      
+
+
+                      
                       <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}"/>
@@ -25,13 +47,22 @@
                         <label for="amount">Amount</label>
                         <input type="text" class="form-control" id="amount" name="amount" value="{{ old('amount') }}"/>
                       </div>
+
                       <div class="form-group">
                         <label for="portions">Portions</label>
                         <input type="text" class="form-control" id="portions" name="portions" value="{{ old('portions') }}"/>
                       </div>
+
+                    
+                                
+                      
+                      
                       <a href="{{ route('recipes.index') }}" class="btn btn-link">Cancel</a>
                       <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
+
+                    <div class="form-group">
+
                 </div>
             </div>
         </div>

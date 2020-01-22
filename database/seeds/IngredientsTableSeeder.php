@@ -9,6 +9,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Ingredient;
+use App\Recipe;
 
 class IngredientsTableSeeder extends Seeder
 {
@@ -20,7 +21,6 @@ class IngredientsTableSeeder extends Seeder
     public function run()
     {
       $ingredient = new Ingredient();
-
       $ingredient->name = 'Apple';
       $ingredient->unit = 'kg';
       $ingredient->energy_kj = '500';
@@ -32,7 +32,6 @@ class IngredientsTableSeeder extends Seeder
       $ingredient->saturated_fat = '8.9';
       $ingredient->fiber = '2.1';
       $ingredient->is_product = '0';
-
       $ingredient->save();
 
     }
