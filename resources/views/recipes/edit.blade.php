@@ -15,6 +15,32 @@
                         </ul>
                     </div>
                     @endif
+
+                    <label for="ingredient">Ingredients</label>
+                                    <br/>
+
+                                        @foreach ($ingredients as $ingredient)
+                                            {{ $ingredient->name }}
+
+                                                 @endforeach
+
+                                                 <br/>
+
+                    <label for="ingredient">Add ingredient</label>
+                                    <br/>
+                    <select name="ingredient_id">
+                                        @foreach ($ingredients as $ingredient)
+                                            <option
+                                                value= {{ $ingredient->id  }}
+                                                {{ (old('ingredient_id') == $ingredient->id)
+                                                    ? "selected"
+                                                    : ""   }}
+                                                 >{{$ingredient->name }}</option>
+
+                                                 @endforeach
+
+                                    </select>
+
                     <form method="POST" action="{{ route('recipes.update', $recipe->id) }}">
                       <input type="hidden" name="_method" value="PUT">
                       <input type="hidden" name="_token" value="{{ csrf_token() }}">

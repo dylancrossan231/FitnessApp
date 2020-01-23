@@ -63,7 +63,7 @@ class RecipeController extends Controller
       $recipe->save($request->all());
       $recipe->ingredient()->attach([
         $ingredient_id = $id
-    ]);      
+    ]);
 
 
       return redirect()->route('recipes.index');
@@ -93,9 +93,11 @@ class RecipeController extends Controller
      */
     public function edit($id)
     {
+      $ingredients = Ingredient::all();
       $recipe = Recipe::findOrFail($id);
       return view('recipes.edit')->with([
-        'recipe' => $recipe
+        'recipe' => $recipe,
+        'ingredients' => $ingredients
       ]);
     }
 
@@ -121,6 +123,9 @@ class RecipeController extends Controller
       $recipe->portions = $request->input('portions');
 
       $recipe->save();
+      $recipe->ingredient()->attach([
+        $ingredient_id = $id
+    ]);
 
       return redirect()->route('recipes.index');
     }

@@ -24,6 +24,7 @@
                       <th>Name</th>
                       <th>Amount</th>
                       <th>Portions</th>
+                      <th>Ingredients</th>
                     </thead>
                     <tbody>
                       @foreach ($recipes as $recipe)
@@ -31,6 +32,7 @@
                         <td>{{ $recipe->name }}</td>
                         <td>{{ $recipe->amount }}</td>
                         <td>{{ $recipe->portions }}</td>
+                        <td></td>
                         <td>
                           <a href="{{ route('recipes.show', $recipe->id) }}" class="btn btn-default">View</a>
                           <a href="{{ route('recipes.edit', $recipe->id) }}" class="btn btn-warning">Edit</a>
