@@ -46,8 +46,16 @@ class RecipeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $id)
+    public function store(Request $request)
     {
+
+
+
+
+
+      //$ingredient_ids = Ingredient::findOrFail($id);
+      
+
       $request->validate([
         'name' => 'required|max:25',
         'amount' => 'required',
@@ -56,14 +64,19 @@ class RecipeController extends Controller
 
 
 
+        
+
       $recipe = new Recipe();
       $recipe->name = $request->input('name');
       $recipe->amount = $request->input('amount');
       $recipe->portions = $request->input('portions');
       $recipe->save($request->all());
+
+      foreach($request->ingredient_ids as $ingredient_id){
       $recipe->ingredient()->attach([
-        $ingredient_id = $id
-    ]);
+        $ingredient_id 
+        ]);      
+      }
 
 
       return redirect()->route('recipes.index');
@@ -93,11 +106,9 @@ class RecipeController extends Controller
      */
     public function edit($id)
     {
-      $ingredients = Ingredient::all();
       $recipe = Recipe::findOrFail($id);
       return view('recipes.edit')->with([
-        'recipe' => $recipe,
-        'ingredients' => $ingredients
+        'recipe' => $recipe
       ]);
     }
 
@@ -123,9 +134,6 @@ class RecipeController extends Controller
       $recipe->portions = $request->input('portions');
 
       $recipe->save();
-      $recipe->ingredient()->attach([
-        $ingredient_id = $id
-    ]);
 
       return redirect()->route('recipes.index');
     }

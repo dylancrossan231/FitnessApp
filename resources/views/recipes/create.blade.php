@@ -15,7 +15,7 @@
                         </ul>
                     </div>
                     @endif
-                    <label for="ingredient">Ingredient</label>
+                    <!-- <label for="ingredient">Ingredient</label>
                                     <br/>
                     <select name="ingredient_id">
                                         @foreach ($ingredients as $ingredient)
@@ -28,9 +28,21 @@
 
                                                  @endforeach
                                         
-                                    </select>
+                                    </select> -->
 
-                    <form method="POST" action="{{ route('recipes.store', $ingredient->id) }}">
+                                    <form method="POST" action="{{ route('recipes.store') }}">
+                                    <label for="ingredient">Ingredient</label>
+                                @foreach($ingredients as $ingredient)
+                                <div class="checkbox">
+                                  <label>
+                                    <input type="checkbox" name="ingredient_ids[{{$ingredient->id -1}}]" value="{{$ingredient->id}}"> <label>{{$ingredient->name}}
+                                  </label>
+                                </div>  
+                                @endforeach
+
+
+
+                    
                     
 
                       <input type="hidden" name="_token" value="{{ csrf_token() }}">
