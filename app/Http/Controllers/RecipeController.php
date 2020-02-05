@@ -62,9 +62,7 @@ class RecipeController extends Controller
         'portions' => 'required'
       ]);
 
-
-
-        
+      
 
       $recipe = new Recipe();
       $recipe->name = $request->input('name');
@@ -73,11 +71,13 @@ class RecipeController extends Controller
       $recipe->save($request->all());
 
       foreach($request->ingredient_ids as $ingredient_id){
-      $recipe->ingredient()->attach([
-        $ingredient_id 
-        ]);      
-      }
+      foreach($request->ingredient_amounts as $ingredient_amount){
+      $recipe->ingredient()->attach($ingredient_id,[
+        'ingredient_amount' => $ingredient_amount
+        ]);
 
+      }      
+      }
 
       return redirect()->route('recipes.index');
     }

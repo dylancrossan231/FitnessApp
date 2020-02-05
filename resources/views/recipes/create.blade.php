@@ -30,15 +30,38 @@
                                         
                                     </select> -->
 
-                                    <form method="POST" action="{{ route('recipes.store') }}">
-                                    <label for="ingredient">Ingredient</label>
+
+
+
+                                       <script>
+                                        $(document).ready(function () {
+                                        $('.checkbox input:checkbox').on('click', function(){
+                                          $(this).closest('.checkbox').find('.ingredient_amounts').toggle();
+                                        })
+                                        });
+                                        </script>
+
+                                <form method="POST" action="{{ route('recipes.store') }}">
+                                <label for="ingredient">Ingredient</label>
                                 @foreach($ingredients as $ingredient)
-                                <div class="checkbox">
+                                <div class=" checkbox form-inline">
                                   <label>
-                                    <input type="checkbox" name="ingredient_ids[{{$ingredient->id -1}}]" value="{{$ingredient->id}}"> <label>{{$ingredient->name}}
+                                    <input type="checkbox" name="ingredient_ids[{{$ingredient->id}}]" value="{{$ingredient->id}}"> <label>{{$ingredient->name}}
                                   </label>
+                                  <input class="form-control ingredient_amounts" type="text" name="ingredient_amounts[]" value="" placeholder="Amount" style="display:none" >
+
+
                                 </div>  
                                 @endforeach
+
+
+                                
+
+
+
+
+
+
 
 
 
