@@ -61,23 +61,30 @@ class RecipeController extends Controller
         'amount' => 'required',
         'portions' => 'required'
       ]);
-
-      
-
+// dd($request);
       $recipe = new Recipe();
       $recipe->name = $request->input('name');
       $recipe->amount = $request->input('amount');
       $recipe->portions = $request->input('portions');
       $recipe->save($request->all());
 
-      foreach($request->ingredient_ids as $ingredient_id){
-      foreach($request->ingredient_amounts as $ingredient_amount){
-      $recipe->ingredient()->attach($ingredient_id,[
-        'ingredient_amount' => $ingredient_amount
-        ]);
+      // foreach($request->ingredient_ids as $ingredient_id){
+      // foreach($request->ingredient_amounts as $ingredient_amount){
+      //   if(($ingredient_id&&!$ingredient_amount == null)){
+      // $recipe->ingredient()->attach($ingredient_id,[
+      //   'ingredient_amount' => $ingredient_amount
+      //   ])
 
-      }      
+      // }
+     
+      foreach($request->ingredient as  $ingredient_id=>$ingredient){
+        dd($request);
+        if($ingredient['checked']="true" && $ingredient['amount']!==null){
+         $recipe->ingredient()->attach($ingredient_id,[
+        'ingredient_amount' => $ingredient['amount']]);
       }
+      }      
+    
 
       return redirect()->route('recipes.index');
     }
@@ -90,11 +97,11 @@ class RecipeController extends Controller
      */
     public function show($id)
     {
-      $ingredients = Ingredient::all();
       $recipe = Recipe::findOrFail($id);
+      $ingredient = Ingredient::where(recipe_id , $id)->get();
       return view('recipes.show')->with([
         'recipe' => $recipe,
-        'ingredients' => $ingredients
+        'ingredient' => $ingredient
       ]);
     }
 

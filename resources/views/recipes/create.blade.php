@@ -46,9 +46,9 @@
                                 @foreach($ingredients as $ingredient)
                                 <div class=" checkbox form-inline">
                                   <label>
-                                    <input type="checkbox" name="ingredient_ids[{{$ingredient->id}}]" value="{{$ingredient->id}}"> <label>{{$ingredient->name}}
+                                    <input type="checkbox"  name="ingredient[{{$ingredient->id}}][checked]" value="true"> <label>{{$ingredient->name}}
                                   </label>
-                                  <input class="form-control ingredient_amounts" type="text" name="ingredient_amounts[]" value="" placeholder="Amount" style="display:none" >
+                                  <input class="form-control ingredient_amounts" type="text" name="ingredient[{{$ingredient->id}}][amount]"  placeholder="Amount" style="display:none" >
 
 
                                 </div>  
