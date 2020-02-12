@@ -4,11 +4,14 @@
 
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Recipe;
 use App\Ingredient;
 use App\Meal;
+use Illuminate\Support\Collection;
+use Illuminate\Database\Eloquent\Builder;
+
 
 
 class RecipeController extends Controller
@@ -48,11 +51,6 @@ class RecipeController extends Controller
      */
     public function store(Request $request)
     {
-
-
-
-
-
       //$ingredient_ids = Ingredient::findOrFail($id);
       
 
@@ -78,7 +76,6 @@ class RecipeController extends Controller
       // }
      
       foreach($request->ingredient as  $ingredient_id=>$ingredient){
-        dd($request);
         if($ingredient['checked']="true" && $ingredient['amount']!==null){
          $recipe->ingredient()->attach($ingredient_id,[
         'ingredient_amount' => $ingredient['amount']]);
@@ -98,10 +95,12 @@ class RecipeController extends Controller
     public function show($id)
     {
       $recipe = Recipe::findOrFail($id);
-      $ingredient = Ingredient::where(recipe_id , $id)->get();
+
+      $ingredients = $recipe->ingredient()->get();
+
       return view('recipes.show')->with([
         'recipe' => $recipe,
-        'ingredient' => $ingredient
+        'ingredients' => $ingredients
       ]);
     }
 
@@ -113,9 +112,12 @@ class RecipeController extends Controller
      */
     public function edit($id)
     {
+      $ingredients = Ingredient::all();
+
       $recipe = Recipe::findOrFail($id);
       return view('recipes.edit')->with([
-        'recipe' => $recipe
+        'recipe' => $recipe,
+        'ingredients' => $ingredients
       ]);
     }
 

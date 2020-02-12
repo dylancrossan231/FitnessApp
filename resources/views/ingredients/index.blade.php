@@ -13,7 +13,17 @@
         <div class="col-md-12">
             <div class="card">
               <div class="card-header">Ingredients
-                <a href="{{ route('ingredients.create') }}" class="btn btn-primary float-right">Add</a>
+              <form action="{{ route('apiview.search') }}" method="POST">
+
+                <div class="form-group col-md-3 float-right">
+                    <input type="search" name="search" class="form-control">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <span class="form-group-btn">
+                      <button type="submit" class="btn btn-primary">Search For Ingredient</button>
+                      </span>
+                  </div>
+              </form>
+                <a href="{{ route('ingredients.create') }}" class="btn btn-primary">Add Manual Ingredient</a>
               </div>
                 <div class="card-body">
                   @if (count($ingredients) === 0)

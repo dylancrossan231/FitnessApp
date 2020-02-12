@@ -15,63 +15,47 @@
                         </ul>
                     </div>
                     @endif
-                    <!-- <label for="ingredient">Ingredient</label>
-                                    <br/>
-                    <select name="ingredient_id">
-                                        @foreach ($ingredients as $ingredient)
-                                            <option 
-                                                value= {{ $ingredient->id  }} 
-                                                {{ (old('ingredient_id') == $ingredient->id) 
-                                                    ? "selected" 
-                                                    : ""   }}
-                                                 >{{$ingredient->name }}</option>
-
-                                                 @endforeach
-                                        
-                                    </select> -->
 
 
 
+                                          
+                    <form action="{{ route('apiview.search') }}" method="POST">
 
-                                       <script>
-                                        $(document).ready(function () {
-                                        $('.checkbox input:checkbox').on('click', function(){
-                                          $(this).closest('.checkbox').find('.ingredient_amounts').toggle();
-                                        })
-                                        });
-                                        </script>
-
-                                <form method="POST" action="{{ route('recipes.store') }}">
-                                <label for="ingredient">Ingredient</label>
-                                @foreach($ingredients as $ingredient)
-                                <div class=" checkbox form-inline">
-                                  <label>
-                                    <input type="checkbox"  name="ingredient[{{$ingredient->id}}][checked]" value="true"> <label>{{$ingredient->name}}
-                                  </label>
-                                  <input class="form-control ingredient_amounts" type="text" name="ingredient[{{$ingredient->id}}][amount]"  placeholder="Amount" style="display:none" >
-
-
-                                </div>  
-                                @endforeach
-
-
-                                
+                    <div class="form-group ">
+                        <input type="search" name="search" class="form-control">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        <span class="form-group-btn">
+                          <button type="submit" class="btn btn-primary">Search For Ingredient</button>
+                          </span>
+                      </div>
+                    </form>
 
 
 
+                      <script>
+                        $(document).ready(function () {
+                           $('.checkbox input:checkbox').on('click', function(){
+                           $(this).closest('.checkbox').find('.ingredient_amounts').toggle();
+                             })
+                          });
+                      </script>
+
+                      <form method="POST" action="{{ route('recipes.store') }}">
+                      <label for="ingredient">Ingredient</label>
+                      @foreach($ingredients as $ingredient)
+                      <div class=" checkbox form-inline">
+                        <label>
+                          <input type="checkbox"  name="ingredient[{{$ingredient->id}}][checked]" value="true"> <label>{{$ingredient->name}}
+                        </label>
+                        <input class="form-control ingredient_amounts" type="text" name="ingredient[{{$ingredient->id}}][amount]"  placeholder="Amount" style="display:none" >
 
 
+                      </div>  
+                      @endforeach
 
 
-
-
-                    
-                    
 
                       <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-                      
-
 
                       
                       <div class="form-group">
