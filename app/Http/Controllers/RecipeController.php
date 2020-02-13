@@ -128,7 +128,7 @@ class RecipeController extends Controller
      * @param  \App\Recipe  $recipe
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,$id)
     {
       $recipe = Recipe::findOrFail($id);
 
@@ -142,7 +142,15 @@ class RecipeController extends Controller
       $recipe->amount = $request->input('amount');
       $recipe->portions = $request->input('portions');
 
-      $recipe->save();
+      $recipe->save($request->all());
+
+      foreach($request->ingredient as  $ingredient_id=>$ingredient){
+        if($ingredient['checked']="true" && $ingredient['amount']!==null){
+         $recipe->ingredient()->attach($ingredient_id,[
+        'ingredient_amount' => $ingredient['amount']]);
+      }
+      }      
+    
 
       return redirect()->route('recipes.index');
     }

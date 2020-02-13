@@ -44,12 +44,10 @@
                       <label for="ingredient">Ingredient</label>
                       @foreach($ingredients as $ingredient)
                       <div class=" checkbox form-inline">
-                        <label>
-                          <input type="checkbox"  name="ingredient[{{$ingredient->id}}][checked]" value="true"> <label>{{$ingredient->name}}
-                        </label>
-                        <input class="form-control ingredient_amounts" type="text" name="ingredient[{{$ingredient->id}}][amount]"  placeholder="Amount" style="display:none" >
-
-
+                            <label>
+                              <input type="checkbox"  name="ingredient[{{$ingredient->id}}][checked]" value="true"> <label>{{$ingredient->name}}
+                            </label>
+                      <input class="form-control ingredient_amounts" type="text" name="ingredient[{{$ingredient->id}}][amount]"  placeholder="Amount" style="display:none" >
                       </div>  
                       @endforeach
 
