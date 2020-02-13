@@ -23,8 +23,7 @@
                     <form method="POST" action="{{ route('weights.store') }}">
                       <input type="hidden" name="_token" value="{{ csrf_token() }}">
                       <div class="form-group">
-                        <label for="user_id">User ID</label>
-                        <input type="text" class="form-control" id="user_id" name="user_id" value="{{ old('user_id') }}"/>
+                        <input type="hidden" class="form-control" id="user_id" name="user_id" value="{{ $user_id }}"/>
                       </div>
                       <div class="form-group">
                         <label for="value">Weight</label>

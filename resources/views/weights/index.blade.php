@@ -22,14 +22,12 @@
                   @else
                   <table id="table-weights" class="table table-hover">
                     <thead>
-                      <th>User ID</th>
                       <th>Weight</th>
                       <th>Date</th>
                     </thead>
                     <tbody>
                       @foreach ($weights as $weight)
                       <tr data id="{{ $weight->id }}">
-                        <td>{{ $weight->user_id }}</td>
                         <td>{{ $weight->value }} kg</td>
                         <td>{{ $weight->date }}</td>
                         <td>

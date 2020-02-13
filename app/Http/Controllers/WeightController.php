@@ -3,7 +3,7 @@
 
 
 namespace App\Http\Controllers;
-
+use Auth;
 use Illuminate\Http\Request;
 use App\Weight;
 use App\User;
@@ -18,7 +18,10 @@ class WeightController extends Controller
      */
     public function index()
     {
-      $weights = Weight::all();
+      $user = User::FindOrFail(Auth::id());
+      $weights = $user->weight()->get();
+
+
 
       return view('weights.index')->with([
         'weights' => $weights
@@ -32,7 +35,10 @@ class WeightController extends Controller
      */
     public function create()
     {
-        return view('weights.create');
+      $user_id = Auth::id();
+        return view('weights.create')->with([
+          'user_id' => $user_id
+        ]);
     }
 
     /**
@@ -80,9 +86,11 @@ class WeightController extends Controller
      */
     public function edit($id)
     {
+      $user_id = Auth::id();
       $weight = Weight::findOrFail($id);
       return view('weights.edit')->with([
-        'weight' => $weight
+        'weight' => $weight,
+        'user_id' => $user_id
       ]);
     }
 

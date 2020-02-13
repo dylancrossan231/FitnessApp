@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Meal;
 use App\User;
 use App\mealType;
+use Auth;
 
 
 class MealController extends Controller
@@ -20,7 +21,9 @@ class MealController extends Controller
      */
     public function index()
     {
-      $meals = Meal::all();
+
+      $user = User::findOrFail(Auth::id());
+      $meals = $user->meal()->get();
 
       return view('meals.index')->with([
         'meals' => $meals
@@ -34,7 +37,10 @@ class MealController extends Controller
      */
     public function create()
     {
-        return view('meals.create');
+      $user_id = Auth::id();
+        return view('meals.create')->with([
+          'user_id' => $user_id
+        ]);
     }
 
     /**
@@ -84,9 +90,11 @@ class MealController extends Controller
      */
     public function edit($id)
     {
+      $user_id = Auth::id();
       $meal = Meal::findOrFail($id);
       return view('meals.edit')->with([
-        'meal' => $meal
+        'meal' => $meal,
+        'user_id' => $user_id
       ]);
     }
 

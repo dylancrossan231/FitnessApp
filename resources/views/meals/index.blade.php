@@ -20,16 +20,15 @@
                   @else
                   <table id="table-meals" class="table table-hover">
                     <thead>
-                      <th>User ID</th>
                       <th>Meal</th>
                       <th>Date</th>
                       <th>Time</th>
                     </thead>
                     <tbody>
+
                       @foreach ($meals as $meal)
-                      <tr data id="{{ $meal->id }}">
-                        <td>{{ $meal->user_id }}</td>
-                        <td>{{ $meal->meal_type_id }}</td>
+                      <tr data-id="{{ $meal->id }}">
+                        <td>{{ $meal->meal_type_id}}</td>
                         <td>{{ $meal->date }}</td>
                         <td>{{ $meal->time }}</td>
                         <td>

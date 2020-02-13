@@ -26,8 +26,7 @@
                       <input type="hidden" name="_method" value="PUT">
                       <input type="hidden" name="_token" value="{{ csrf_token() }}">
                       <div class="form-group">
-                        <label for="user_id">User ID</label>
-                        <input type="text" class="form-control" id="user_id" name="user_id" value="{{ old('user_id', $meal->user_id) }}"/>
+                        <input type="hidden" class="form-control" id="user_id" name="user_id" value="{{ old('user_id',$user_id) }}"/>
                       </div>
                       <div class="form-group">
                         <label for="meal_type_id">Meal</label>
