@@ -1,4 +1,6 @@
 
+@extends('layouts.app')
+
 @section('content')
 <form action="{{ route('apiview.search') }}" method="POST">
 
@@ -10,4 +12,5 @@
         </span>
      </div>
 </form>
+
 @endsection

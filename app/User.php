@@ -5,10 +5,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Weight;
 use App\Meal;
 
-class User extends Model
+class User extends Authenticatable
 {
     public function weight() {
         return $this->hasMany('App\Weight');

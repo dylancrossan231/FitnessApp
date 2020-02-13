@@ -49,9 +49,17 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'username' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'name' => ['required', 'string', 'max:255'],
+            'dob' => ['required', 'date'],
+            'gender' => ['required', 'string', 'max:1'],
+            'country' => ['required', 'string', 'max:255'],
+            'start_weight' => ['required'],
+            'goal_weight' => ['required'],
+            'activity_level' => ['required'],
+            'profile_info' => ['required', 'string', 'max:255'],
         ]);
     }
 
@@ -64,9 +72,17 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
+            'username' => $data['username'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'name' => $data['name'],
+            'dob' => $data['dob'],
+            'gender' => $data['gender'],
+            'country' => $data['country'],
+            'start_weight' => $data['start_weight'],
+            'goal_weight' => $data['goal_weight'],
+            'activity_level' => $data['activity_level'],
+            'profile_info' => $data['profile_info'],
         ]);
     }
 }
