@@ -69,6 +69,9 @@
                         <label for="portions">Portions</label>
                         <input type="text" class="form-control" id="portions" name="portions" value="{{ old('portions') }}"/>
                       </div>
+                      <div class="form-group">
+                        <input type="hidden" class="form-control" id="user_id" name="user_id" value="{{ $user_id }}"/>
+                      </div>
 
                     
                                 

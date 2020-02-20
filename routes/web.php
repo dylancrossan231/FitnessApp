@@ -25,13 +25,12 @@ Auth::routes();
 Route::get('/manualcalorieadd', 'ManualcalorieController@index')->name('manualcalorieadd.index');
 Route::get('/apiview', 'ApiController@index')->name('apiview.index');
 Route::post('/apiview/search/', 'ApiController@search')->name('apiview.search');
-// Route::get('/apiview/search/{TPNB}', 'ApiController@show')->name('apisearch.show');
 Route::get('/apiview/product/create/{TPNB}', 'ApiController@create')->name('calories.create');
 Route::post('/apiview/store', 'ApiController@store')->name('apisearch.store');
 
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/user/profile', 'User\HomeController@index')->name('user.home');
+Route::get('/profile', 'User\HomeController@index')->name('user.home');
 
 Route::get('/weights', 'WeightController@index')->name('weights.index');
 Route::get('/weights/create', 'WeightController@create')->name('weights.create');
@@ -64,3 +63,5 @@ Route::post('/recipes/store', 'RecipeController@store')->name('recipes.store');
 Route::get('/recipes/{id}/edit', 'RecipeController@edit')->name('recipes.edit');
 Route::put('/recipes/{id}', 'RecipeController@update')->name('recipes.update');
 Route::delete('/recipes/{id}', 'RecipeController@destroy')->name('recipes.destroy');
+
+Route::get('/profile', 'ProfileController@index')->name('profile.index');

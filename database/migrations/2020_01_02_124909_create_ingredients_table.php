@@ -34,8 +34,14 @@ class CreateIngredientsTable extends Migration
             $table->decimal('saturated_fat', 4, 1);
             $table->decimal('fiber', 4, 1);
             $table->decimal('salt',4,1);
+            $table->bigInteger('user_id')->nullable()->unsigned();
             $table->boolean('is_product')->nullable();
+
+            $table->foreign('user_id')->references('id')->on('users');
+
+
             $table->timestamps();
+
         });
     }
 

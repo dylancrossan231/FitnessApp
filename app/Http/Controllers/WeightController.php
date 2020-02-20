@@ -20,9 +20,6 @@ class WeightController extends Controller
     {
       $user = User::FindOrFail(Auth::id());
       $weights = $user->weight()->get();
-
-
-
       return view('weights.index')->with([
         'weights' => $weights
       ]);

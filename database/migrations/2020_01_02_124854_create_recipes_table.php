@@ -26,6 +26,9 @@ class CreateRecipesTable extends Migration
             $table->decimal('amount', 4, 2);
             $table->integer('portions');
             $table->timestamps();
+            $table->bigInteger('user_id')->nullable()->unsigned();
+
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

@@ -4,7 +4,8 @@
 
 
 namespace App\Http\Controllers;
-
+use App\User;
+use Auth;
 use Illuminate\Http\Request;
 use App\Ingredient;
 use App\Recipe;
@@ -19,8 +20,8 @@ class IngredientController extends Controller
      */
     public function index()
     {
-      $ingredients = Ingredient::all();
-
+      $user = User::FindOrFail(Auth::id());
+      $ingredients = $user->ingredient()->get();
       return view('ingredients.index')->with([
         'ingredients' => $ingredients
       ]);
@@ -33,7 +34,10 @@ class IngredientController extends Controller
      */
     public function create()
     {
-        return view('ingredients.create');
+      $user_id = Auth::id();
+      return view('ingredients.create')->with([
+        'user_id' => $user_id
+      ]);
     }
 
     /**
@@ -56,6 +60,7 @@ class IngredientController extends Controller
         'saturated_fat' => 'required',
         'fiber' => 'required',
         'is_product' => 'nullable'
+
       ]);
 
       $ingredient = new Ingredient();
@@ -70,7 +75,9 @@ class IngredientController extends Controller
       $ingredient->fat = $request->input('fat');
       $ingredient->saturated_fat = $request->input('saturated_fat');
       $ingredient->fiber = $request->input('fiber');
+      $ingredient->user_id = $request->input('user_id');
       $ingredient->is_product = $request->input('is_product');
+// dd($request);
 
       $ingredient->save();
 

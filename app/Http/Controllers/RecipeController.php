@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use App\Recipe;
 use App\Ingredient;
 use App\Meal;
+use Auth;
+use App\User;
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Builder;
 
@@ -23,8 +25,8 @@ class RecipeController extends Controller
      */
     public function index()
     {
-      $recipes = Recipe::all();
-
+      $user = User::findOrFail(Auth::id());
+      $recipes = $user->recipe()->get();
       return view('recipes.index')->with([
         'recipes' => $recipes
       ]);
@@ -37,9 +39,11 @@ class RecipeController extends Controller
      */
     public function create()
     {
+      $user_id = Auth::id();
       $ingredients = Ingredient::all();
         return view('recipes.create')->with([
-          'ingredients' => $ingredients
+          'ingredients' => $ingredients,
+          'user_id' => $user_id
         ]);
     }
 
@@ -64,6 +68,7 @@ class RecipeController extends Controller
       $recipe->name = $request->input('name');
       $recipe->amount = $request->input('amount');
       $recipe->portions = $request->input('portions');
+      $recipe->user_id = $request->input('user_id');
       $recipe->save($request->all());
 
       // foreach($request->ingredient_ids as $ingredient_id){

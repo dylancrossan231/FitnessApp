@@ -1,11 +1,4 @@
 @extends('layouts.app')
-# @Author: izzy
-# @Date:   2020-01-06T13:31:31+00:00
-# @Last modified by:   izzy
-# @Last modified time: 2020-01-09T11:00:49+00:00
-
-
-
 @section('content')
 <div class="container">
     <div class="row justify-content-center">

@@ -11,12 +11,20 @@ use App\Meal;
 
 class User extends Authenticatable
 {
+
+    public function recipe(){
+        return $this->hasMany('App\Recipe');
+    }
+
     public function weight() {
         return $this->hasMany('App\Weight');
     }
 
     public function meal() {
         return $this->hasMany('App\Meal');
+    }
+    public function ingredient(){
+        return $this->hasMany('App\Ingredient');
     }
 
 }

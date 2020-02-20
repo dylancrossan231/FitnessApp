@@ -25,6 +25,11 @@
                     <form method="POST" action="{{ route('ingredients.store') }}">
                       <input type="hidden" name="_token" value="{{ csrf_token() }}">
                       <div class="form-group">
+                        <input type="hidden" class="form-control" id="user_id" name="user_id" value="{{ $user_id }}"/>
+                      </div>
+                      <div class="form-group">
+
+                  
                         <label for="name">Name</label>
                         <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}"/>
                       </div>
@@ -64,6 +69,8 @@
                         <label for="fiber">Fiber</label>
                         <input type="text" class="form-control" id="fiber" name="fiber" value="{{ old('fiber') }}"/>
                       </div>
+
+
                       <a href="{{ route('ingredients.index') }}" class="btn btn-link">Cancel</a>
                       <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
