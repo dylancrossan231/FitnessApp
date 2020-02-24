@@ -13,7 +13,7 @@ class Meal extends Model
 {
     public function recipe()
     {
-        return $this->belongsToMany('App\Recipe', 'meal_recipes');
+        return $this->belongsToMany('App\Recipe', 'meal_recipes')->withPivot('portion');;
     }
 
     public function mealType() {

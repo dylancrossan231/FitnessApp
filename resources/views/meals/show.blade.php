@@ -1,18 +1,11 @@
 @extends('layouts.app')
-# @Author: izzy
-# @Date:   2020-01-06T13:31:31+00:00
-# @Last modified by:   izzy
-# @Last modified time: 2020-01-09T11:01:49+00:00
-
-
-
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8 col-mid-offset-2">
             <div class="card">
                 <div class="card-header">
-                  {{ $meal->mealType }} on {{ $meal->date }}
+                Meal
                 </div>
                 <div class="card-body">
                   <table id="table-meal" class="table table-hover">
@@ -42,6 +35,30 @@
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <button type="submit" class="form-control btn btn-danger">Delete</>
                   </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-mid-offset-2">
+            <div class="card">
+                <div class="card-header">
+                recipes
+                </div>
+                <div class="card-body">
+                  <table id="table-meal" class="table table-hover">
+                    <tbody>
+                      <tr>
+                      @foreach($recipes as $recipe)
+                        <td>recipe name</td>
+                        <td>{{ $recipe->name }}</td>
+                      </tr>
+
+                    </tbody>
+                  </table>
+                      @endforeach
                 </div>
             </div>
         </div>

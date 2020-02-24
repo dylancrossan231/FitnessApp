@@ -69,6 +69,10 @@
 
                             var chart = c3.generate({
                             data: {
+                                stack:
+                                {
+                                    normalize: true
+                                },
                                 x: 'times',
                                 xFormat: '%Y-%m-%d %H:%M:%S', 
                                 columns: [
@@ -79,13 +83,11 @@
                             },
                             axis: {
                                 x: {
-                                    
-                                    // show:false,
                                     type: 'timeseries',
                                     tick: {
                                             rotate: 50,
                                             multiline: false,
-                                            format: '%Y-%m-%d %H:%M'
+                                            format: '%Y-%m-%d'
                                          },
                                          height: 60
 

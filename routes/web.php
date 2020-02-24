@@ -41,7 +41,7 @@ Route::put('/weights/{id}', 'WeightController@update')->name('weights.update');
 Route::delete('/weights/{id}', 'WeightController@destroy')->name('weights.destroy');
 
 Route::get('/meals', 'MealController@index')->name('meals.index');
-Route::get('/meals/create', 'MealController@create')->name('meals.create');
+Route::get('/meals/create/{id}', 'MealController@create')->name('meals.create');
 Route::get('/meals/{id}', 'MealController@show')->name('meals.show');
 Route::post('/meals/store', 'MealController@store')->name('meals.store');
 Route::get('/meals/{id}/edit', 'MealController@edit')->name('meals.edit');

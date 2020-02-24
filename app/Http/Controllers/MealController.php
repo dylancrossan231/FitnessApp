@@ -10,6 +10,8 @@ use App\Meal;
 use App\User;
 use App\mealType;
 use Auth;
+use App\Recipe;
+use App\Ingredient;
 
 
 class MealController extends Controller
@@ -21,13 +23,17 @@ class MealController extends Controller
      */
     public function index()
     {
-
       $user = User::findOrFail(Auth::id());
       $meals = $user->meal()->get();
+      $mealTypes = mealType::all();
 
       return view('meals.index')->with([
-        'meals' => $meals
+
+        'meals' => $meals,
+        'mealTypes' => $mealTypes
       ]);
+
+
     }
 
     /**
@@ -35,11 +41,18 @@ class MealController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
+      $meal_type_id =  mealType::findOrFail($id);
       $user_id = Auth::id();
+      $user = User::findOrFail(Auth::id());
+      $recipes = $user->recipe()->get();
         return view('meals.create')->with([
-          'user_id' => $user_id
+          'user_id' => $user_id,
+          'meal_type_id' => $meal_type_id,
+          'recipes' => $recipes,
+          'user' => $user
+
         ]);
     }
 
@@ -51,20 +64,23 @@ class MealController extends Controller
      */
     public function store(Request $request)
     {
+      $recipe_id = $request->recipe_id;
+
       $request->validate([
         'date' => 'required|date',
         'time' => 'required',
-        'user_id' => 'required|alpha_num|max:3',
-        'meal_type_id' => 'required|alpha_num'
+        'user_id' => 'required|alpha_num|max:3'
       ]);
 
       $meal = new Meal();
       $meal->date = $request->input('date');
       $meal->time = $request->input('time');
       $meal->user_id = $request->input('user_id');
-      $meal->meal_type_id = $request->input('user_id');
+      $meal->meal_type_id = $request->input('meal_type_id');
       $meal->save();
 
+      $meal->recipe()->attach($recipe_id);
+      
       return redirect()->route('meals.index');
     }
 
@@ -77,8 +93,11 @@ class MealController extends Controller
     public function show($id)
     {
       $meal = Meal::findOrFail($id);
+      $recipes = $meal->recipe()->get();
+
       return view('meals.show')->with([
-        'meal' => $meal
+        'meal' => $meal,
+        'recipes' => $recipes
       ]);
     }
 

@@ -21,6 +21,7 @@
                           @endforeach
                         </ul>
                     </div>
+
                     @endif
                     <form method="POST" action="{{ route('meals.store') }}">
                       <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -28,9 +29,19 @@
                         <input type="hidden" class="form-control" id="user_id" name="user_id" value="{{ $user_id }}"/>
                       </div>
                       <div class="form-group">
-                        <label for="meal_type_id">Meal</label>
-                        <input type="text" class="form-control" id="meal_type_id" name="meal_type_id" value="{{ old('meal_type_id') }}"/>
+                        <input type="hidden" class="form-control" id="meal_type_id" name="meal_type_id" value="{{ $meal_type_id->id }}"/>
                       </div>
+
+                      <select name="recipe_id">
+                                        @foreach ($recipes as $recipe)
+                                            <option 
+                                                value={{ $recipe->id }} 
+                                                {{ (old('recipe_id') == $recipe->id) 
+                                                    ? "selected" 
+                                                    : "" }}
+                                                 > {{ $recipe->name}}</option>
+                                        @endforeach
+                                    </select>
                       <div class="form-group">
                         <label for="date">Date</label>
                         <input type="date" class="form-control" id="date" name="date" value="{{ old('date') }}"/>
