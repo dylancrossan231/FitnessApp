@@ -30,10 +30,10 @@
                         <input type="text" class="form-control" id="value" name="value" value="{{ old('value') }}"/>
                         kg
                       </div>
-                      <div class="form-group">
+                      <!-- <div class="form-group">
                         <label for="date">Date</label>
                         <input type="date" class="form-control" id="date" name="date" value="{{ old('date') }}"/>
-                      </div>
+                      </div> -->
                       <a href="{{ route('weights.index') }}" class="btn btn-link">Cancel</a>
                       <button type="submit" class="btn btn-primary">Submit</button>
                     </form>

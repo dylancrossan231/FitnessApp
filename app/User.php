@@ -11,7 +11,7 @@ use App\Meal;
 
 class User extends Authenticatable
 {
-
+    protected $fillable = ['username'];
     public function recipe(){
         return $this->hasMany('App\Recipe');
     }

@@ -12,7 +12,43 @@
                 <script src="c3/c3.min.js"></script>
                 </head>
                 <body>
-                    <div id="chart"></div>
+                    <div>
+                  <table id="table-recipes" class="table table-hover">
+                    <thead>
+                      <th>Username</th>
+                      <th>Name</th>
+                      <th>Date of Birth</th>
+                      <th>Gender</th>
+                      <th>Country</th>
+                      <th>Current Weight</th>
+                      <th>Goal Weight</th>
+
+
+
+                    </thead>
+                    <tbody>
+
+                      <tr data id="{{ $user->id }}">
+                        <td>{{ $user->username }}</td>
+                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->dob }}</td>
+                        <td>{{ $user->gender }}</td>
+                        <td>{{ $user->country }}</td>
+                        <td>{{ $user->start_weight }}</td>
+                        <td>{{ $user->goal_weight }}</td>
+
+
+
+                        <td></td>
+                        <td>
+                      </tr>
+                      
+                    </tbody>
+                  </table>
+                </div>
+
+                
+                <div id="chart">
                     <script>
 
 
@@ -43,15 +79,29 @@
                             },
                             axis: {
                                 x: {
+                                    
+                                    // show:false,
                                     type: 'timeseries',
                                     tick: {
-                                            format: '%Y-%m-%d'
-                                         }
+                                            rotate: 50,
+                                            multiline: false,
+                                            format: '%Y-%m-%d %H:%M'
+                                         },
+                                         height: 60
+
                                 }
+                                
                             }
                         });
 
                     </script>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
 
                 </body>
             </div>

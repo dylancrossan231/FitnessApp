@@ -19,8 +19,8 @@ class ProfileController extends Controller
         $weights = $user->weight()->get();
 
         return view('profile.index')->with([
-
-            'weights' => $weights
+            'weights' => $weights,
+            'user' => $user
 
             ]);
     }

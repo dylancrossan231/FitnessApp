@@ -47,13 +47,13 @@ class WeightController extends Controller
     public function store(Request $request)
     {
       $request->validate([
-        'date' => 'required|date',
+        // 'date' => 'required|date',
         'value' => 'required|max:5',
         'user_id' => 'required|alpha_num|max:3'
       ]);
 
       $weight = new Weight();
-      $weight->date = $request->input('date');
+      // $weight->date = $request->input('date');
       $weight->value = $request->input('value');
       $weight->user_id = $request->input('user_id');
       $weight->save();
@@ -103,12 +103,12 @@ class WeightController extends Controller
       $weight = Weight::findOrFail($id);
 
       $request->validate([
-        'date' => 'required|date',
+        // 'date' => 'required|date',
         'value' => 'required|max:5',
         'user_id' => 'required|alpha_num|max:3'
       ]);
 
-      $weight->date = $request->input('date');
+      // $weight->date = $request->input('date');
       $weight->value = $request->input('value');
       $weight->user_id = $request->input('user_id');
       $weight->save();
