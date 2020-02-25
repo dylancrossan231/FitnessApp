@@ -24,7 +24,7 @@ Auth::routes();
 
 Route::get('/manualcalorieadd', 'ManualcalorieController@index')->name('manualcalorieadd.index');
 Route::get('/apiview', 'ApiController@index')->name('apiview.index');
-Route::post('/apiview/search/', 'ApiController@search')->name('apiview.search');
+Route::post('/apiview/search', 'ApiController@search')->name('apiview.search');
 Route::get('/apiview/product/create/{TPNB}', 'ApiController@create')->name('calories.create');
 Route::post('/apiview/store', 'ApiController@store')->name('apisearch.store');
 
@@ -65,3 +65,6 @@ Route::put('/recipes/{id}', 'RecipeController@update')->name('recipes.update');
 Route::delete('/recipes/{id}', 'RecipeController@destroy')->name('recipes.destroy');
 
 Route::get('/profile', 'ProfileController@index')->name('profile.index');
+
+// Route::get('autocomplete',array('as'=>'autocomplete','uses'=>'AjaxController@autoComplete'));
+Route::get('searchajax',array('as'=>'searchajax','uses'=>'AjaxController@autoComplete'));

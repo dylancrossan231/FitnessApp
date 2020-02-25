@@ -11,7 +11,7 @@ use App\Ingredient;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use App\Http\Controllers\ApiController;
-
+use Auth;
 class ApiController extends Controller
 {
 
@@ -29,6 +29,7 @@ class ApiController extends Controller
 
     $response=$response->getBody();
     $response = json_decode($response, true);
+
    // dd($response);
   //  return $response;
 
@@ -68,7 +69,7 @@ class ApiController extends Controller
 //       <button type="submit" class="btn btn-primary">View</button>
 //       </span>
 //   </div>
-// </form> 
+// </form>
 // }
 
 public function create($id)
@@ -88,22 +89,25 @@ public function create($id)
 
   $response=$response->getBody();
   $response = json_decode($response, true);
-  
+
   $product = $response['products'][0];
-  
+
 //  return $response;
 
-
+ $user_id = Auth::id();
            return view('calories.create')->with([
-             'product'=>$product]);
+
+              'product'=>$product,
+              'user_id' => $user_id
+           ]);
 
 
 }
 
 public function store(Request $request)
 {
- 
-  
+
+
   $ingredient = new Ingredient();
   $ingredient->name = $request->input("name");
   $ingredient->unit = $request->input("unit");
@@ -116,11 +120,12 @@ public function store(Request $request)
   $ingredient->saturated_fat = $request->input("Saturates(g)");
   $ingredient->fiber = $request->input("Fibre(g)");
   $ingredient->salt = $request->input("Salt(g)");
+  $ingredient->user_id = $request->input('user_id');
 
   $ingredient->save();
 
   return redirect()->route('ingredients.index');
-    
+
 }
 
 
@@ -135,7 +140,7 @@ public function search(Request $request)
 
   $client = new Client();
 
-  $response =$client->request('GET', 'https://dev.tescolabs.com/grocery/products/?query='.$query.'&offset=0&limit=20', [
+  $response =$client->request('GET', 'https://dev.tescolabs.com/grocery/products/?query='.$query.'&offset=0&limit=5', [
       'headers' => [
           'Ocp-Apim-Subscription-Key'=>'a3c51c289be148ac9492336f4b6dadff'
 
@@ -167,7 +172,7 @@ public function search(Request $request)
   $responseShow = json_decode($responseShow, true);
   $productinfo = $responseShow['products'][0];
 
-  
+
  // dd($response);
 //  return $response;
 
@@ -181,9 +186,3 @@ return view('calories.searchcalories')->with([
 }
 
 }
-
-
-
-
-
-
