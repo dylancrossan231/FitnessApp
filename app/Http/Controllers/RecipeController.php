@@ -60,14 +60,12 @@ class RecipeController extends Controller
 
       $request->validate([
         'name' => 'required|max:25',
-        'amount' => 'required',
-        'portions' => 'required'
+        'amount' => 'required'
       ]);
 // dd($request);
       $recipe = new Recipe();
       $recipe->name = $request->input('name');
       $recipe->amount = $request->input('amount');
-      $recipe->portions = $request->input('portions');
       $recipe->user_id = $request->input('user_id');
       $recipe->save($request->all());
 

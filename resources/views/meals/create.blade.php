@@ -31,17 +31,53 @@
                       <div class="form-group">
                         <input type="hidden" class="form-control" id="meal_type_id" name="meal_type_id" value="{{ $meal_type_id->id }}"/>
                       </div>
+                      <div class="card">
+                <div class="card-header">Add new Ingredients</div>
 
-                      <select name="recipe_id">
-                                        @foreach ($recipes as $recipe)
-                                            <option 
-                                                value={{ $recipe->id }} 
-                                                {{ (old('recipe_id') == $recipe->id) 
-                                                    ? "selected" 
-                                                    : "" }}
-                                                 > {{ $recipe->name}}</option>
-                                        @endforeach
-                                    </select>
+                    <div class="card-body">
+                      <script>
+                        $(document).ready(function () {
+                           $('.checkbox input:checkbox').on('click', function(){
+                           $(this).closest('.checkbox').find('.ingredient_amounts').toggle();
+                             })
+                          });
+                      </script>
+
+                      <form method="POST" action="{{ route('recipes.store') }}">
+                      @foreach($ingredients as $ingredient)
+                      <div class=" checkbox form-inline">
+                            <label>
+                              <input type="checkbox"  name="ingredient[{{$ingredient->id}}][checked]" value="true"> <label>{{$ingredient->name}}
+                            </label>
+                      <input class="form-control ingredient_amounts" type="text" name="ingredient[{{$ingredient->id}}][amount]"  placeholder="Amount" style="display:none" >
+                      </div>
+                      @endforeach
+                      </div>
+                      </div>
+
+                      <div class="card">
+                    <div class="card-header">Add new recipes</div>
+                    <div class="card-body">
+                      <script>
+                        $(document).ready(function () {
+                           $('.checkbox input:checkbox').on('click', function(){
+                           $(this).closest('.checkbox').find('.portion').toggle();
+                             })
+                          });
+                      </script>
+
+                      <form method="POST" action="{{ route('recipes.store') }}">
+                      @foreach($recipes as $recipe)
+                      <div class=" checkbox form-inline">
+                            <label>
+                              <input type="checkbox"  name="recipe[{{$recipe->id}}][checked]" value="true"> <label>{{$recipe->name}}
+                            </label>
+                      <input class="form-control portion" type="text" name="recipe[{{$recipe->id}}][portion]"  placeholder="How many portions?" style="display:none" >
+                      </div>
+                      @endforeach
+                      </div>
+                      </div>
+
                       <div class="form-group">
                         <label for="date">Date</label>
                         <input type="date" class="form-control" id="date" name="date" value="{{ old('date') }}"/>
@@ -57,5 +93,11 @@
             </div>
         </div>
     </div>
-</div>
+
+  
+
+
+
+    <script>
+
 @endsection

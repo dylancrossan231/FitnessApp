@@ -115,3 +115,39 @@ class AjaxController extends Controller
 
 
 }
+<script>
+$(document).ready(function() {
+ src = "{{ route('searchajax') }}";
+  $("#search_text").autocomplete({
+     source: function(request, response) {
+         $.ajax({
+             url: src,
+             dataType: "json",
+             
+             data: {
+                 term : request.term
+             },
+             success: function(data) {
+                 response(data);
+                 
+             }
+         });
+     },
+     minLength: 1,
+ });
+
+});
+
+
+
+</script> 
+
+
+<div class="row">
+<div class="col-xs-12 col-sm-12 col-md-12">
+    <div class="form-group">
+      <input type="search" name="search" id="search_text" class="form-control" placeholder="Search for an Ingredient...">
+
+    </div>
+</div>
+</div>
