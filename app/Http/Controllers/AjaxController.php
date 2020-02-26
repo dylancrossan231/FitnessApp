@@ -27,26 +27,28 @@ class AjaxController extends Controller
         // $products=Product::where('name','LIKE','%'.$query.'%')->get();
 
         $client = new Client();
-        $response =$client->request('GET', 'https://dev.tescolabs.com/grocery/products/?query=bacon&offset=0&limit=5', [
+        $response =$client->request('GET', 'https://dev.tescolabs.com/grocery/products/?query='.$query.'&offset=0&limit=5', [
             'headers' => [
                 'Ocp-Apim-Subscription-Key'=>'a3c51c289be148ac9492336f4b6dadff'
 
             ]
         ]);
-        $response=$response->getBody()->getContents();
-        json_decode($response, true);
+        $response = json_decode($response->getBody(), true);
 
-        return $response->toArray();
+        $data = array();
 
-        foreach($response['uk']['ghs']['product']['results'] as $product){
+  foreach($response ['uk']['ghs']['products']['results'] as $product){
 
-                return  $product['name'];
-        }
+    $data[] = array('value'=>$product);
 
-        if(count($newresponse))
-             return $newresponse;
-        else
-            return ['value'=>'No Result Found','id'=>''];
+
+  }
+    if(count($data))
+
+        return $data;
+    else
+
+    return null;
     }
 
     public function create()

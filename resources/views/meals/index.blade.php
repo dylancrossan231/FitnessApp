@@ -20,13 +20,11 @@
 
                     <table id="table-meals" class="table table-hover">
                     <thead>
-                      <th>Meal</th>
                       <th>Date</th>
                       <th>Time</th>
                     </thead>
                     <tbody>
                     <tr data-id=>
-                        <td>{{ $meal->meal_type_id}}</td>
                         <td>{{ $meal->date }}</td>
                         <td>{{ $meal->time }}</td>
                       </table>

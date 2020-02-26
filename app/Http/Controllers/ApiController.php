@@ -177,7 +177,10 @@ public function search(Request $request)
 //  return $response;
 
 return view('calories.searchcalories')->with([
-  'response'=>$response,'productinfo'=>$productinfo,'query'=> $query]);
+  'response'=>$response,
+  'productinfo'=>$productinfo,
+  'query'=> $query
+  ]);
 
 
 

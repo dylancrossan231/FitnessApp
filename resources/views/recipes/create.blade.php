@@ -21,7 +21,7 @@
 
 
 
-
+<!-- 
                     <form action="{{ route('apiview.search') }}" method="POST">
 
                     <div class="form-group ">
@@ -30,36 +30,42 @@
                           <button type="submit" class="btn btn-primary">Search For Ingredient</button>
                           </span>
                       </div>
-                    </form>
+                    </form> -->
 
 
 
-                      <script>
-                        $(document).ready(function () {
-                           $('.checkbox input:checkbox').on('click', function(){
-                           $(this).closest('.checkbox').find('.ingredient_amounts').toggle();
-                             })
-                          });
-                      </script>
-
-                      <form method="POST" action="{{ route('recipes.store') }}">
-                      <label for="ingredient">Ingredient</label>
-                      @foreach($ingredients as $ingredient)
-                      <div class=" checkbox form-inline">
-                            <label>
-                              <input type="checkbox"  name="ingredient[{{$ingredient->id}}][checked]" value="true"> <label>{{$ingredient->name}}
-                            </label>
-                      <input class="form-control ingredient_amounts" type="text" name="ingredient[{{$ingredient->id}}][amount]"  placeholder="Amount" style="display:none" >
-                      </div>
-                      @endforeach
                       <link href="http://demo.expertphp.in/css/jquery.ui.autocomplete.css" rel="stylesheet">
                     <script src="http://demo.expertphp.in/js/jquery.js"></script>
                     <script src="http://demo.expertphp.in/js/jquery-ui.min.js"></script>
 
+
+
+
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+
+<div class="form-group">
+  <label for="name">Name</label>
+  <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}"/>
+</div>
+<div class="form-group">
+  <label for="amount">Amount</label>
+  <input type="text" class="form-control" id="amount" name="amount" value="{{ old('amount') }}"/>
+</div>
+
+<div class="form-group">
+  <label for="portions">Portions</label>
+  <input type="text" class="form-control" id="portions" name="portions" value="{{ old('portions') }}"/>
+</div>
+<div class="form-group">
+  <input type="hidden" class="form-control" id="user_id" name="user_id" value="{{ $user_id }}"/>
+</div>
+
                        <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
-                                  <input type="search" name="search" id="search_text" class="form-control">
+                                  <input type="search" name="search" id="search_text" class="form-control" placeholder="Search for an Ingredient...">
+                                  <input type="submit" >
 
                                 </div>
                             </div>
@@ -73,42 +79,47 @@
                                 $.ajax({
                                     url: src,
                                     dataType: "json",
+                                    select: function(){
+
+                                    },
                                     data: {
                                         term : request.term
                                     },
-                                    success: function(response) {
-                                        response(response);
-
+                                    success: function(data) {
+                                        response(data);
+                                        
                                     }
                                 });
                             },
                             minLength: 1,
-
                         });
+
                     });
+
+
+
                     </script>
 
 
+                      <script>
+                        $(document).ready(function () {
+                           $('.checkbox input:checkbox').on('click', function(){
+                           $(this).closest('.checkbox').find('.ingredient_amounts').toggle();
+                             })
+                          });
+                      </script>
 
-                      <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                      <form method="POST" action="{{ route('recipes.store') }}">
+                      <label for="ingredient">Ingredients</label>
+                      @foreach($ingredients as $ingredient)
+                      <div class=" checkbox form-inline">
+                            <label>
+                              <input type="checkbox"  name="ingredient[{{$ingredient->id}}][checked]" value="true"> <label>{{$ingredient->name}}
+                            </label>
+                      <input class="form-control ingredient_amounts" type="text" name="ingredient[{{$ingredient->id}}][amount]"  placeholder="Amount" style="display:none" >
+                      </div>
+                      @endforeach
 
-
-                      <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}"/>
-                      </div>
-                      <div class="form-group">
-                        <label for="amount">Amount</label>
-                        <input type="text" class="form-control" id="amount" name="amount" value="{{ old('amount') }}"/>
-                      </div>
-
-                      <div class="form-group">
-                        <label for="portions">Portions</label>
-                        <input type="text" class="form-control" id="portions" name="portions" value="{{ old('portions') }}"/>
-                      </div>
-                      <div class="form-group">
-                        <input type="hidden" class="form-control" id="user_id" name="user_id" value="{{ $user_id }}"/>
-                      </div>
 
 
 
