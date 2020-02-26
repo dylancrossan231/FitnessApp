@@ -65,7 +65,7 @@
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
                                   <input type="search" name="search" id="search_text" class="form-control" placeholder="Search for an Ingredient...">
-                                  <input type="submit" >
+                                  <input type="submit">
 
                                 </div>
                             </div>

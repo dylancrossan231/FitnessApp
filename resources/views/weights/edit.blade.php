@@ -9,7 +9,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8 col-mid-offset-2">
             <div class="card">
-                <div class="card-header">Edit weight measurement</div>
+                <div class="card-header">Edit weight measurement on {{ $weight->date }}</div>
                 <div class="card-body">
                     @if ($errors->any())
                     <div class="alert alert-danger">
@@ -27,15 +27,13 @@
                         <input type="hidden" class="form-control" id="user_id" name="user_id" value="{{ old('user_id', $user_id) }}"/>
                       </div>
                       <div class="form-group">
-                        <label for="value">Weight</label>
-                        <input type="text" class="form-control" id="value" name="value" value="{{ old('value', $weight->value) }}"/>
-                        kg
+                        <input type="hidden" class="form-control" id="date" name="date" value="{{ old('date', $weight->date) }}"/>
                       </div>
-                      <!-- <div class="form-group">
-                        <label for="date">Date</label>
-                        <input type="date" class="form-control" id="date" name="date" value="{{ old('date', $weight->date) }}"/>
-                      </div> -->
-                      <a href="{{ route('weights.index') }}" class="btn btn-link">Cancel</a>
+                      <div class="form-group">
+                        <label for="value">Weight (kg)</label>
+                        <input type="text" class="form-control" id="value" name="value" value="{{ old('value', $weight->value) }}"/>
+                      </div>
+                      <a href="{{ route('profile.index') }}" class="btn btn-link">Cancel</a>
                       <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>

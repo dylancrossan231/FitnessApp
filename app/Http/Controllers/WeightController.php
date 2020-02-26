@@ -20,7 +20,7 @@ class WeightController extends Controller
     {
       $user = User::FindOrFail(Auth::id());
       $weights = $user->weight()->get();
-      return view('weights.index')->with([
+      return view('profile.index')->with([
         'weights' => $weights
       ]);
     }
@@ -47,18 +47,18 @@ class WeightController extends Controller
     public function store(Request $request)
     {
       $request->validate([
-        // 'date' => 'required|date',
+        'date' => 'required|date',
         'value' => 'required|max:5',
         'user_id' => 'required|alpha_num|max:3'
       ]);
 
       $weight = new Weight();
-      // $weight->date = $request->input('date');
+      $weight->date = $request->input('date');
       $weight->value = $request->input('value');
       $weight->user_id = $request->input('user_id');
       $weight->save();
 
-      return redirect()->route('weights.index');
+      return redirect()->route('profile.index');
     }
 
     /**
@@ -69,10 +69,6 @@ class WeightController extends Controller
      */
     public function show($id)
     {
-      $weight = Weight::findOrFail($id);
-      return view('weights.show')->with([
-        'weight' => $weight
-      ]);
     }
 
     /**
@@ -103,17 +99,17 @@ class WeightController extends Controller
       $weight = Weight::findOrFail($id);
 
       $request->validate([
-        // 'date' => 'required|date',
+        'date' => 'required|date',
         'value' => 'required|max:5',
         'user_id' => 'required|alpha_num|max:3'
       ]);
 
-      // $weight->date = $request->input('date');
+      $weight->date = $request->input('date');
       $weight->value = $request->input('value');
       $weight->user_id = $request->input('user_id');
       $weight->save();
 
-      return redirect()->route('weights.index');
+      return redirect()->route('profile.index');
     }
 
     /**
@@ -126,6 +122,6 @@ class WeightController extends Controller
     {
       $weight = Weight::findOrFail($id);
       $weight->delete();
-      return redirect()->route('weights.index');
+      return redirect()->route('profile.index');
     }
 }
