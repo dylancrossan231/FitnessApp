@@ -65,6 +65,12 @@ Route::put('/recipes/{id}', 'RecipeController@update')->name('recipes.update');
 Route::delete('/recipes/{id}', 'RecipeController@destroy')->name('recipes.destroy');
 
 Route::get('/profile', 'ProfileController@index')->name('profile.index');
+Route::get('/profile/create', 'ProfileController@create')->name('profile.create');
+Route::get('/profile/{id}', 'ProfileController@show')->name('profile.show');
+Route::post('/profile/store', 'ProfileController@store')->name('profile.store');
+Route::get('/profile/{id}/edit', 'ProfileController@edit')->name('profile.edit');
+Route::put('/profile/{id}', 'ProfileController@update')->name('profile.update');
+Route::delete('/profile/{id}', 'ProfileController@destroy')->name('profile.destroy');
 
 // Route::get('autocomplete',array('as'=>'autocomplete','uses'=>'AjaxController@autoComplete'));
 Route::get('searchajax',array('as'=>'searchajax','uses'=>'AjaxController@autoComplete'));

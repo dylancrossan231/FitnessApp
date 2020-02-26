@@ -95,9 +95,9 @@
                             <div class="col-md-6">
                               <select id="gender" class="form-control @error('gender') is-invalid @enderror" name="gender" value="{{ old('gender') }}" required autocomplete="gender" autofocus>
                                 <option value="" disabled selected></option>
-                                <option value="f">Female</option>
-                                <option value="m">Male</option>
-                                <option value="o">Other</option>
+                                <option value="female">Female</option>
+                                <option value="male">Male</option>
+                                <option value="other">Other</option>
                               </select>
 
                                 @error('gender')

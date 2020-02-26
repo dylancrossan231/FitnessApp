@@ -13,42 +13,114 @@
                 </head>
                 <body>
                     <div>
-                  <table id="table-recipes" class="table table-hover">
-                    <thead>
-                      <th>Username</th>
-                      <th>Name</th>
-                      <th>Date of Birth</th>
-                      <th>Gender</th>
-                      <th>Country</th>
-                      <th>Current Weight</th>
-                      <th>Goal Weight</th>
+                      <a href="{{ route('profile.edit', $user->id) }}" class="btn btn-primary float-right">Edit profile</a>
+                      <h3>User info</h3>
+                      <p>Username: {{ $user->username }}</p>
+                      <p>Name: {{ $user->name }}</p>
+                      <p>Date of birth: {{ $user->dob }}</p>
+                      <p>Gender: {{ $user->gender }}</p>
+                      <p>Country: {{ $user->country }}</p>
+                      <br/>
 
+                      <h3>Fitness profile</h3>
+                      <p>Height: {{ $user->height }} m</p>
+                      <p>Start weight: {{ $user->start_weight }} kg</p>
+                      <p>Start BMI:
 
+                        <script type="text/javascript">
 
-                    </thead>
-                    <tbody>
+                              var start_weight = "<?php echo $user->start_weight; ?>";
+                              var height = "<?php echo $user->height; ?>";
+                              var start_bmi = start_weight/Math.pow(height, 2);
 
-                      <tr data id="{{ $user->id }}">
-                        <td>{{ $user->username }}</td>
-                        <td>{{ $user->name }}</td>
-                        <td>{{ $user->dob }}</td>
-                        <td>{{ $user->gender }}</td>
-                        <td>{{ $user->country }}</td>
-                        <td>{{ $user->start_weight }}</td>
-                        <td>{{ $user->goal_weight }}</td>
+                            document.write(start_bmi.toFixed(2));
 
+                          </script>
 
+                      </p>
 
-                        <td></td>
-                        <td>
-                      </tr>
-                      
-                    </tbody>
-                  </table>
+                      <p>Your start BMI classified you as
+
+                        <script type="text/javascript">
+
+                              var bmi;
+                              if (start_bmi < 18.5) {
+                                bmi = "underweight";
+                              }
+
+                              else if (start_bmi >= 18.5 && start_bmi < 25) {
+                                bmi = "healthy";
+                              }
+
+                              else if (start_bmi >= 25 && start_bmi < 30) {
+                                bmi = "overweight";
+                              }
+
+                              else {
+                                bmi = "obese";
+                              }
+
+                            document.write(bmi);
+
+                          </script>.
+                        </p>
+
+                      <p>Goal weight: {{ $user->goal_weight }} kg</p>
+
+                      <p>Goal BMI:
+
+                        <script type="text/javascript">
+
+                              var goal_weight = "<?php echo $user->goal_weight; ?>";
+                              var goal_bmi = goal_weight/Math.pow(height, 2);
+
+                            document.write(goal_bmi.toFixed(2));
+
+                          </script>
+
+                      </p>
+
+                      <p>Your goal BMI will classify you as
+
+                        <script type="text/javascript">
+
+                              var bmi2;
+                              if (goal_bmi < 18.5) {
+                                bmi2 = "underweight";
+                              }
+
+                              else if (goal_bmi >= 18.5 && goal_bmi < 25) {
+                                bmi2 = "healthy";
+                              }
+
+                              else if (goal_bmi >= 25 && goal_bmi < 30) {
+                                bmi2 = "overweight";
+                              }
+
+                              else {
+                                bmi2 = "obese";
+                              }
+
+                            document.write(bmi2);
+
+                          </script>.
+                        </p>
+
+                        <br/>
+
+                        <h3>Profile info</h3>
+                        <p>{{ $user->profile_info }}</p>
+
                 </div>
 
-                
+                <br/>
+                <a href="{{ route('weights.create') }}" class="btn btn-primary float-right">Add weight</a>
+                <h3>Weight trends</h3>
+                <br/>
+
                 <div id="chart">
+
+
                     <script>
 
 
@@ -74,7 +146,7 @@
                                     normalize: true
                                 },
                                 x: 'times',
-                                xFormat: '%Y-%m-%d %H:%M:%S', 
+                                xFormat: '%Y-%m-%d %H:%M:%S',
                                 columns: [
                                     xCol,
                                     weightCol
@@ -92,15 +164,46 @@
                                          height: 60
 
                                 }
-                                
+
                             }
                         });
 
                     </script>
                     </div>
+
+                    <br/><br/>
+
+            <div>
+              @if (count($weights) === 0)
+              <p>There are no weight measurements to display.</p>
+              @else
+              <table id="table-weights" class="table table-hover">
+                <thead>
+                  <th>Weight</th>
+                  <th>Date</th>
+                </thead>
+                <tbody>
+                  @foreach ($weights as $weight)
+                  <tr data id="{{ $weight->id }}">
+                    <td>{{ $weight->value }} kg</td>
+                    <td>{{ $weight->date }}</td>
+                    <td>
+                      <a href="{{ route('weights.edit', $weight->id) }}" class="btn btn-warning">Edit</a>
+                      <form style="display:inline-block" method="POST" action="{{ route('weights.destroy', $weight->id) }}">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        <button type="submit" class="form-control btn btn-danger">Delete</>
+                      </form>
+                    </td>
+                  </tr>
+                  @endforeach
+                </tbody>
+              </table>
+              @endif
             </div>
         </div>
     </div>
+</div>
 </div>
 </div>
 

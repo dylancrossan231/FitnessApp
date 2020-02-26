@@ -32,7 +32,7 @@ class ProfileController extends Controller
      */
     public function create()
     {
-        
+
         return view('profile.index')->with([
         ]);
     }
@@ -67,7 +67,12 @@ class ProfileController extends Controller
      */
     public function edit($id)
     {
-        //
+      $user_id = Auth::id();
+      $user = User::findOrFail(Auth::id());
+      return view('profile.edit')->with([
+      'user_id' => $user_id,
+      'user' => $user
+      ]);
     }
 
     /**
@@ -79,7 +84,36 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $user = User::findOrFail($id);
+
+      $request->validate([
+        'username' => 'required',
+        'email' => 'required|email',
+        'name' => 'required',
+        'dob' => 'required',
+        'gender' => 'required',
+        'country' => 'required',
+        'height' => 'required',
+        'start_weight' => 'required',
+        'goal_weight' => 'required',
+        'activity_level' => 'required',
+        'profile_info' => 'required'
+      ]);
+
+      $user->username = $request->input('username');
+      $user->email = $request->input('email');
+      $user->name = $request->input('name');
+      $user->dob = $request->input('dob');
+      $user->gender = $request->input('gender');
+      $user->country = $request->input('country');
+      $user->height = $request->input('height');
+      $user->start_weight = $request->input('start_weight');
+      $user->goal_weight = $request->input('goal_weight');
+      $user->activity_level = $request->input('activity_level');
+      $user->profile_info = $request->input('profile_info');
+      $user->save();
+
+      return redirect()->route('profile.index');
     }
 
     /**

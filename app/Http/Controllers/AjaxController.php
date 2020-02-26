@@ -36,7 +36,7 @@ class AjaxController extends Controller
         $response=$response->getBody()->getContents();
         json_decode($response, true);
 
-        return $response->toArray();
+        return $response;
 
         foreach($response['uk']['ghs']['product']['results'] as $product){
 

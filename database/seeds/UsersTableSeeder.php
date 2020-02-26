@@ -26,12 +26,13 @@ class UsersTableSeeder extends Seeder
       $user->name = 'Dylan Stupid';
       $user->dob = '1998-12-20';
       $user->gender = 'male';
-      $user->country = 'Ireland';
+      $user->country = 'IE';
+      $user->height = 1.72;
       $user->start_weight = 120;
       $user->goal_weight = 70;
       $user->activity_level = '1.8';
       $user->profile_info = 'Hi. I\'m fat and I wanna lose weight lol.';
-      
+
       $user->save();
 
 

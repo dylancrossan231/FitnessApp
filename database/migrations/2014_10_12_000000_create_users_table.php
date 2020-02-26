@@ -27,6 +27,7 @@ class CreateUsersTable extends Migration
             $table->date('dob');
             $table->string('gender');
             $table->string('country');
+            $table->decimal('height', 3, 2);
             $table->decimal('start_weight', 4, 1);
             $table->decimal('goal_weight', 4, 1);
             $table->decimal('activity_level', 2, 1);
