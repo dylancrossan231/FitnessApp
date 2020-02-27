@@ -11,12 +11,35 @@
                   <table id="table-meal" class="table table-hover">
                     <tbody>
                       <tr>
-                        <td>User ID</td>
-                        <td>{{ $meal->user_id }}</td>
-                      </tr>
-                      <tr>
                         <td>Meal</td>
-                        <td>{{ $meal->meal_type_id }}</td>
+                        <td><script type="text/javascript">
+
+                              var meal = "<?php echo $meal->meal_type_id; ?>";
+                              var type;
+
+                              if (meal == 1) {
+                                type = "Breakfast";
+                              }
+
+                              else if (meal == 2) {
+                                type = "Lunch";
+                              }
+
+                              else if (meal == 3) {
+                                type = "Dinner";
+                              }
+
+                              else if (meal == 4) {
+                                type = "Supper";
+                              }
+
+                              else if (meal == 5) {
+                                type = "Snack";
+                              }
+
+                            document.write(type);
+
+                          </script></td>
                       </tr>
                       <tr>
                         <td>Date</td>
@@ -45,20 +68,29 @@
         <div class="col-md-8 col-mid-offset-2">
             <div class="card">
                 <div class="card-header">
-                recipes
+                Recipes
                 </div>
                 <div class="card-body">
                   <table id="table-meal" class="table table-hover">
                     <tbody>
+                      @foreach($meal->recipe as $recipe)
+                      <tr data id="{{ $ingredient->id }}">
+                        <td>{{ $ingredient->name }}</td>
+                        <td>{{ $ingredient->unit }}</td>
                       <tr>
-                      @foreach($recipes as $recipe)
-                        <td>recipe name</td>
+                        <td>Recipe name</td>
                         <td>{{ $recipe->name }}</td>
                       </tr>
-
+                      <tr>
+                        <td>Portions</td>
+                        <td>{{ $recipe->pivot->portion }}</td>
+                      </tr>
+                      <tr>
+                        
+                      </tr>
                     </tbody>
                   </table>
-                      @endforeach
+                  @endforeach
                 </div>
             </div>
         </div>
@@ -187,4 +219,5 @@
         </div>
     </div>
 </div>
+
 @endsection

@@ -27,11 +27,13 @@
                     <tr data-id=>
                         <td>{{ $meal->date }}</td>
                         <td>{{ $meal->time }}</td>
+
                       </table>
                       </tbody>
-                    </table>
-                    <a href="{{ route('meals.show', $meal->id) }}" class="btn btn-link">view</a>
 
+                    </table>
+                    <a href="{{ route('meals.show', $meal->id) }}" class="btn btn-link">View</a>
+                    
                      @endif
                     @endforeach
 
