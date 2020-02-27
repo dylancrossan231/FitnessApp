@@ -95,7 +95,7 @@ class MealController extends Controller
          $meal->ingredient()->attach($ingredient_id,[
         'ingredient_amount' => $ingredient['amount']]);
       }
-      } 
+      }
 
       return redirect()->route('meals.index');
     }
@@ -110,6 +110,7 @@ class MealController extends Controller
     {
       $meal = Meal::findOrFail($id);
       $recipes = $meal->recipe()->get();
+      
 
       return view('meals.show')->with([
         'meal' => $meal,

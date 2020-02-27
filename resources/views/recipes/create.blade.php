@@ -22,10 +22,6 @@
                           <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}"/>
                         </div>
                         <div class="form-group">
-                          <label for="amount">Amount</label>
-                          <input type="text" class="form-control" id="amount" name="amount" value="{{ old('amount') }}"/>
-                        </div>
-                        <div class="form-group">
                           <input type="hidden" class="form-control" id="user_id" name="user_id" value="{{ $user_id }}"/>
                         </div>
 
@@ -62,8 +58,8 @@
                     </form>
 
 
-            
-        
-    
+
+
+
 
 @endsection

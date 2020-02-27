@@ -22,7 +22,7 @@ class CreateRecipeIngredientsTable extends Migration
     {
         Schema::create('recipe_ingredients', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->decimal('ingredient_amount', 4, 2);
+            $table->decimal('ingredient_amount', 6, 2);
             $table->bigInteger('ingredient_id')->unsigned();
             $table->bigInteger('recipe_id')->unsigned();
             $table->timestamps();

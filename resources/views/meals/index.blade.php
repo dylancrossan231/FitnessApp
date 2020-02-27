@@ -16,7 +16,7 @@
 
                     @foreach($meals as $meal)
 
-                    @if($meal->meal_type_id === $mealType->id) 
+                    @if($meal->meal_type_id === $mealType->id)
 
                     <table id="table-meals" class="table table-hover">
                     <thead>
@@ -30,13 +30,16 @@
                       </table>
                       </tbody>
                     </table>
-                    
+                    <a href="{{ route('meals.show', $meal->id) }}" class="btn btn-link">view</a>
+
                      @endif
-                    @endforeach  
+                    @endforeach
 
                   @endforeach
 
                 @endif
+
+                <input id="date" type="date" class="form-control" name="date" value="{{ date('YY-mm-dd') }}">
 
                 </div>
             </div>
@@ -44,4 +47,4 @@
     </div>
 </div>
 
-@endsection                  
+@endsection
