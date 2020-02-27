@@ -40,19 +40,24 @@
         </div>
     </div>
 </div>
+
+
+@if(count($recipes)=== 0)
+
+
+@else
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8 col-mid-offset-2">
             <div class="card">
                 <div class="card-header">
-                recipes
+                Recipes
                 </div>
                 <div class="card-body">
                   <table id="table-meal" class="table table-hover">
                     <tbody>
                       <tr>
                       @foreach($recipes as $recipe)
-                        <td>recipe name</td>
                         <td>{{ $recipe->name }}</td>
                       </tr>
 
@@ -64,4 +69,36 @@
         </div>
     </div>
 </div>
+@endif
+
+<div class="container">
+@if(count($ingredients)===0)
+
+
+
+@else
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-mid-offset-2">
+            <div class="card">
+                <div class="card-header">
+                Ingredients
+                </div>
+                <div class="card-body">
+                  <table id="table-meal" class="table table-hover">
+                    <tbody>
+                      <tr>
+                      @foreach($ingredients as $ingredient)
+                        <td>{{ $ingredient->name }}</td>
+                      </tr>
+
+                    </tbody>
+                  </table>
+                      @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endif
+
 @endsection

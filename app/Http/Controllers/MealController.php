@@ -110,10 +110,12 @@ class MealController extends Controller
     {
       $meal = Meal::findOrFail($id);
       $recipes = $meal->recipe()->get();
+      $ingredients = $meal->ingredient()->get();
 
       return view('meals.show')->with([
         'meal' => $meal,
-        'recipes' => $recipes
+        'recipes' => $recipes,
+        'ingredients' => $ingredients
       ]);
     }
 
