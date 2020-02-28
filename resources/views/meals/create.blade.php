@@ -54,7 +54,9 @@
                       @endforeach
                       </div>
                       </div>
+@if(count($recipes)===0)
 
+@else
                       <div class="card">
                     <div class="card-header">Add new recipes</div>
                     <div class="card-body">
@@ -78,6 +80,9 @@
                       </div>
                       </div>
 
+                      @endif
+
+
                       <div class="form-group">
                         <label for="date">Date</label>
                         <input type="date" class="form-control" id="date" name="date" value="{{ old('date') }}"/>
@@ -89,12 +94,14 @@
                       <a href="{{ route('meals.index') }}" class="btn btn-link">Cancel</a>
                       <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
+
                 </div>
+
             </div>
         </div>
     </div>
 
-  
+
 
 
 

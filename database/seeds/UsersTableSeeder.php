@@ -36,5 +36,24 @@ class UsersTableSeeder extends Seeder
       $user->save();
 
 
+      $user = new User();
+
+      $user->id = 2;
+      $user->username = 'izzy_lazy';
+      $user->email = 'izzyislazy123@hotmail.com';
+      $user->password = bcrypt('secret123');
+      $user->name = 'izzy Stupid';
+      $user->dob = '1998-12-20';
+      $user->gender = 'female';
+      $user->country = 'BIG RETARD POLAND';
+      $user->height = 1.72;
+      $user->start_weight = 120;
+      $user->goal_weight = 70;
+      $user->activity_level = '1.8';
+      $user->profile_info = 'Hi. Im polish';
+
+      $user->save();
+
+
     }
 }

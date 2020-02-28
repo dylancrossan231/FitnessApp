@@ -19,12 +19,12 @@ class WeightsTableSeeder extends Seeder
      */
     public function run()
     {
-        $weight = new Weight();
-
-        $weight->date = '2019-11-07';
-        $weight->value = '68.7';
-        $weight->user_id = 1;
-        
-        $weight->save();
+        // $weight = new Weight();
+        //
+        // $weight->date = '2019-11-07';
+        // $weight->value = '68.7';
+        // $weight->user_id = 1;
+        //
+        // $weight->save();
     }
 }

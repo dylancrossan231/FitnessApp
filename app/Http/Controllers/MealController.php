@@ -82,23 +82,20 @@ class MealController extends Controller
       $meal->meal_type_id = $request->input('meal_type_id');
       $meal->save();
 
+      foreach($request->ingredient as  $ingredient_id=>$ingredient){
+        if($ingredient['checked']="true" && $ingredient['amount']!==null){
+         $meal->ingredient()->attach($ingredient_id,[
+        'ingredient_amount' => $ingredient['amount']]);
+      }
+      }
 
       foreach($request->recipe as  $recipe_id=>$recipe){
         if($recipe['checked']="true" && $recipe['portion']!==null){
          $meal->recipe()->attach($recipe_id,[
         'portion' => $recipe['portion']]);
       }
-
       }
-      foreach($request->ingredient as  $ingredient_id=>$ingredient){
-        if($ingredient['checked']="true" && $ingredient['amount']!==null){
-         $meal->ingredient()->attach($ingredient_id,[
 
-
-        'ingredient_amount' => $ingredient['amount']]);
-
-      }
-      }
 
       return redirect()->route('meals.index');
     }
@@ -113,12 +110,14 @@ class MealController extends Controller
     {
       $meal = Meal::findOrFail($id);
       $recipe = $meal->recipe()->get();
-      $ingredient = $meal->ingredient()->get();
+
+      $ingredients = $meal->ingredient()->get();
+
 
       return view('meals.show')->with([
         'meal' => $meal,
         'recipe' => $recipe,
-        'ingredient' => $ingredient
+        'ingredients' => $ingredients
       ]);
     }
 

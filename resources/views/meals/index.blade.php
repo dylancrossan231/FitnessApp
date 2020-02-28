@@ -7,9 +7,7 @@
               <div class="card-header">Meals
               </div>
                 <div class="card-body">
-                @if (count($meals) === 0))
-                  <p>There are no meals to display.</p>
-                @else
+
                   @foreach($mealTypes as $mealType)
                   <h1>{{$mealType->name}}</h1>
                   <a href="{{ route('meals.create', $mealType->id) }}" class="btn btn-primary float-right">Add</a>
@@ -33,13 +31,13 @@
 
                     </table>
                     <a href="{{ route('meals.show', $meal->id) }}" class="btn btn-link">View</a>
-                    
+
                      @endif
                     @endforeach
 
                   @endforeach
 
-                @endif
+              
 
                 <input id="date" type="date" class="form-control" name="date" value="{{ date('YY-mm-dd') }}">
 

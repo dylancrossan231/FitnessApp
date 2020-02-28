@@ -20,8 +20,8 @@ class CreateMealIngredientsTable extends Migration
             $table->decimal('ingredient_amount', 6, 2);
             $table->timestamps();
 
-            $table->foreign('meal_id')->references('id')->on('ingredients')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('ingredient_id')->references('id')->on('recipes')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('meal_id')->references('id')->on('meals')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('ingredient_id')->references('id')->on('ingredients')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

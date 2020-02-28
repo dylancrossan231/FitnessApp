@@ -21,10 +21,5 @@ class RecipesTableSeeder extends Seeder
     public function run()
     {
 
-        $recipe = new Recipe();
-        $recipe->name = 'Apple Pie';
-        $recipe->portions = 8;
-        $recipe->save();
-
     }
 }
