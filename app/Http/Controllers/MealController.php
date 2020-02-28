@@ -95,7 +95,7 @@ class MealController extends Controller
          $meal->ingredient()->attach($ingredient_id,[
         'ingredient_amount' => $ingredient['amount']]);
       }
-      }
+      } 
 
       return redirect()->route('meals.index');
     }
@@ -109,26 +109,17 @@ class MealController extends Controller
     public function show($id)
     {
       $meal = Meal::findOrFail($id);
-<<<<<<< HEAD
+
       $recipes = $meal->recipe()->get();
       $ingredients = $meal->ingredient()->get();
 
       return view('meals.show')->with([
         'meal' => $meal,
         'recipes' => $recipes,
-        'ingredients' => $ingredients
-=======
-      $recipe = $meal->recipe()->get();
-      $ingredient = $meal->recipe()->ingredient()->get();
-
-      return view('meals.show')->with([
-        'meal' => $meal,
-        'recipe' => $recipe,
-        'ingredient' => $ingredient
->>>>>>> 22214ccfe6938466a7d8a9303e915599533fcb5f
+        'ingredients' = $ingredients
       ]);
     }
-
+    
     /**
      * Show the form for editing the specified resource.
      *

@@ -17,7 +17,7 @@ class CreateMealIngredientsTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('meal_id')->unsigned();
             $table->bigInteger('ingredient_id')->unsigned();
-            $table->decimal('ingredient_amount', 4, 2);
+            $table->decimal('ingredient_amount', 6, 2);
             $table->timestamps();
 
             $table->foreign('meal_id')->references('id')->on('ingredients')->onUpdate('cascade')->onDelete('cascade');
