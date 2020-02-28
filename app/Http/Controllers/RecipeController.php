@@ -56,16 +56,14 @@ class RecipeController extends Controller
     public function store(Request $request)
     {
       //$ingredient_ids = Ingredient::findOrFail($id);
-      
+
 
       $request->validate([
-        'name' => 'required|max:25',
-        'amount' => 'required'
+        'name' => 'required|max:25'
       ]);
 // dd($request);
       $recipe = new Recipe();
       $recipe->name = $request->input('name');
-      $recipe->amount = $request->input('amount');
       $recipe->user_id = $request->input('user_id');
       $recipe->save($request->all());
 
@@ -77,14 +75,14 @@ class RecipeController extends Controller
       //   ])
 
       // }
-     
+
       foreach($request->ingredient as  $ingredient_id=>$ingredient){
         if($ingredient['checked']="true" && $ingredient['amount']!==null){
          $recipe->ingredient()->attach($ingredient_id,[
         'ingredient_amount' => $ingredient['amount']]);
       }
-      }      
-    
+      }
+
 
       return redirect()->route('recipes.index');
     }
@@ -98,12 +96,11 @@ class RecipeController extends Controller
     public function show($id)
     {
       $recipe = Recipe::findOrFail($id);
-
       $ingredients = $recipe->ingredient()->get();
-
       return view('recipes.show')->with([
         'recipe' => $recipe,
         'ingredients' => $ingredients
+
       ]);
     }
 
@@ -137,12 +134,10 @@ class RecipeController extends Controller
 
       $request->validate([
         'name' => 'required|max:25',
-        'amount' => 'required',
         'portions' => 'required'
       ]);
 
       $recipe->name = $request->input('name');
-      $recipe->amount = $request->input('amount');
       $recipe->portions = $request->input('portions');
 
       $recipe->save($request->all());
@@ -152,8 +147,8 @@ class RecipeController extends Controller
          $recipe->ingredient()->attach($ingredient_id,[
         'ingredient_amount' => $ingredient['amount']]);
       }
-      }      
-    
+      }
+
 
       return redirect()->route('recipes.index');
     }

@@ -14,7 +14,6 @@
                   <table id="table-recipes" class="table table-hover">
                     <thead>
                       <th>Name</th>
-                      <th>Amount</th>
                       <th>Portions</th>
                       <th>Ingredients</th>
                     </thead>
@@ -22,7 +21,6 @@
                       @foreach ($recipes as $recipe)
                       <tr data id="{{ $recipe->id }}">
                         <td>{{ $recipe->name }}</td>
-                        <td>{{ $recipe->amount }}</td>
                         <td>{{ $recipe->portions }}</td>
                         <td></td>
                         <td>

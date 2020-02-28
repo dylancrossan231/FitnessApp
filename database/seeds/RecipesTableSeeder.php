@@ -23,7 +23,6 @@ class RecipesTableSeeder extends Seeder
 
         $recipe = new Recipe();
         $recipe->name = 'Apple Pie';
-        $recipe->amount = '1.1';
         $recipe->portions = 8;
         $recipe->save();
 

@@ -16,7 +16,7 @@
                     </div>
                     @endif
 
-  
+
                         <script>
                             $(document).ready(function () {
                                 $('.checkbox input:checkbox').on('click', function(){
@@ -24,7 +24,7 @@
                                 })
                             });
                         </script>
-                      
+
                       <form method="POST" action="/recipes/{{$recipe->id  }}">
 
                         <input type="hidden" name="_method" value="PUT">
@@ -39,20 +39,15 @@
                                  <input type="checkbox"  name="ingredient[{{$ingredient->id}}][checked]" value="true"> <label>{{$ingredient->name}}
                               </label>
                                  <input class="form-control ingredient_amounts" type="text" name="ingredient[{{$ingredient->id}}][amount]"  placeholder="Amount" style="display:none" value="{{ old('ingredient_amount', $recipe->ingredient_amount )}}" >
-                        </div>  
+                        </div>
                         @endforeach
 
 
-                      <input type="hidden" name="_token" value="{{ csrf_token() }}">  
+                      <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                       <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" class="form-control" id="name" name="name" value="{{ old('name', $recipe->name) }}"/>
-                      </div>
-
-                      <div class="form-group">
-                        <label for="amount">Amount</label>
-                        <input type="text" class="form-control" id="amount" name="amount" value="{{ old('amount', $recipe->amount )}}"/>
                       </div>
 
                       <div class="form-group">

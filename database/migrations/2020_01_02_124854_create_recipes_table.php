@@ -23,7 +23,6 @@ class CreateRecipesTable extends Migration
         Schema::create('recipes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->decimal('amount', 4, 2);
             $table->integer('portions');
             $table->timestamps();
             $table->bigInteger('user_id')->nullable()->unsigned();

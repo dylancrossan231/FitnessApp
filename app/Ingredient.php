@@ -12,9 +12,9 @@ class Ingredient extends Model
 
     public function recipe()
     {
-        return $this->belongsToMany('App\Recipe', 'recipe_ingredients','recipe_id','ingredient_id');
+        return $this->belongsToMany('App\Recipe', 'recipe_ingredients','recipe_id','ingredient_id')->withPivot('ingredient_amount');
     }
-    
+
     public function user() {
         return $this->belongsTo('App\User');
     }
@@ -23,4 +23,3 @@ class Ingredient extends Model
         return $this->belongsToMany('App\Meal', 'meal_ingredients');
     }
 }
-        
