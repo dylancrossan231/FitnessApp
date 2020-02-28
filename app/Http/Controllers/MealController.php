@@ -97,6 +97,13 @@ class MealController extends Controller
       }
 
 
+      foreach($request->ingredient as  $ingredient_id=>$ingredient){
+        if($ingredient['checked']="true" && $ingredient['amount']!==null){
+         $meal->ingredient()->attach($ingredient_id,[
+        'ingredient_amount' => $ingredient['amount']]);
+      }
+      }
+
       return redirect()->route('meals.index');
     }
 
@@ -110,7 +117,6 @@ class MealController extends Controller
     {
       $meal = Meal::findOrFail($id);
       $recipe = $meal->recipe()->get();
-
       $ingredients = $meal->ingredient()->get();
 
 
@@ -172,8 +178,23 @@ class MealController extends Controller
      */
     public function destroy($id)
     {
-      $meal = Meal::findOrFail($id);
       $meal->delete();
       return redirect()->route('meals.index');
+    }
+
+    public function destroyrecipe($mealid,$id){
+      $meal = Meal::findOrFail($mealid);
+      $meal->recipe()->detach($id);
+      return redirect()->route('meals.index');
+
+
+    }
+    public function destroyingredient($mealid,$id ){
+      $meal = Meal::findOrFail($mealid);
+      $meal->recipe()->detach($id);
+      return redirect()->route('meals.index');
+
+
+
     }
 }

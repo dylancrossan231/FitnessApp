@@ -19,14 +19,14 @@ class MealsTableSeeder extends Seeder
      */
     public function run()
     {
-        // $meal = new Meal();
-        //
-        // $meal->id = 1;
-        // $meal->date = "2020-01-01";
-        // $meal->time = "12:00:00";
-        // $meal->user_id = 1;
-        // $meal->meal_type_id = 1;
-        //
-        // $meal->save();
+        $meal = new Meal();
+
+        $meal->id = 1;
+        $meal->date = "2020-01-01";
+        $meal->time = "12:00:00";
+        $meal->user_id = 1;
+        $meal->meal_type_id = 1;
+
+        $meal->save();
     }
 }

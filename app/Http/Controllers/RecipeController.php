@@ -165,4 +165,7 @@ class RecipeController extends Controller
       $recipe->delete();
       return redirect()->route('recipes.index');
     }
+    public function destroyingredient($id){
+      
+    }
 }

@@ -63,6 +63,12 @@
         </div>
     </div>
 </div>
+
+
+@if(count($recipe)=== 0)
+
+
+@else
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10 col-mid-offset-2">
@@ -76,18 +82,21 @@
                   <table id="table-recipe" class="table table-hover">
                     <tbody>
                       <tr>
-                        <td>Name</td>
+                        <td>Recipe name</td>
+
+
+
                         <td>{{ $recipe->name }}</td>
                       </tr>
                       <tr>
                         <td>Portions</td>
-                        <td>{{ $recipe->ingredient }}</td>
+                        <td>{{ $recipe->pivot->portion }}</td>
                       </tr>
                     </tbody>
                   </table>
-                  <a href="{{ route('recipes.index') }}" class="btn btn-default">Back</a>
-                  <a href="{{ route('recipes.edit', $recipe->id) }}" class="btn btn-warning">Edit</a>
-                  <form style="display:inline-block" method="POST" action="{{ route('recipes.destroy', $recipe->id) }}">
+                  <a href="{{ route('recipes.show', $recipe->id) }}" class="btn btn-default">View</a>
+
+                  <form style="display:inline-block" method="POST" action="{{ route('mealrecipes.destroy', $recipe->id, $meal->id) }}">
                     <input type="hidden" name="_method" value="DELETE">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <button type="submit" class="form-control btn btn-danger">Delete</>
@@ -95,12 +104,17 @@
                 </div>
             </div>
             @endforeach
+
+            @endif
         </div>
 
 
 
         </div>
     </div>
+
+    @if (count($ingredients) === 0)
+    @else
     <div class="container">
       <div class="row justify-content-center">
           <div class="col-md-10 col-mid-offset-2">
@@ -109,9 +123,6 @@
                     <a href="{{ route('ingredients.create') }}" class="btn btn-primary float-right">Add</a>
                   </div>
                     <div class="card-body">
-                      @if (count($ingredients) === 0)
-                      <p>There are no ingredients to display.</p>
-                      @else
                       <table id="table-ingredients" class="table table-hover">
                         <thead>
                           <th>Name</th>
@@ -207,8 +218,7 @@
 
                             <td>
                               <a href="{{ route('ingredients.show', $ingredient->id) }}" class="btn btn-default">View</a>
-                              <a href="{{ route('ingredients.edit', $ingredient->id) }}" class="btn btn-warning">Edit</a>
-                              <form style="display:inline-block" method="POST" action="{{ route('ingredients.destroy', $ingredient->id) }}">
+                              <form style="display:inline-block" method="POST" action="{{ route('mealingredients.destroy', $ingredient->id, $meal->id) }}">
                                 <input type="hidden" name="_method" value="DELETE">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <button type="submit" class="form-control btn btn-danger">Delete</>
@@ -225,7 +235,5 @@
         </div>
 
 </div>
-
-
 
 @endsection

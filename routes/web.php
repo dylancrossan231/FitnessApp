@@ -47,14 +47,16 @@ Route::post('/meals/store', 'MealController@store')->name('meals.store');
 Route::get('/meals/{id}/edit', 'MealController@edit')->name('meals.edit');
 Route::put('/meals/{id}', 'MealController@update')->name('meals.update');
 Route::delete('/meals/{id}', 'MealController@destroy')->name('meals.destroy');
+Route::delete('/meals/ingredient/{id}', 'MealController@destroyingredient')->name('mealingredients.destroy');
+Route::delete('/meals/recipe/{id}', 'MealController@destroyrecipe')->name('mealrecipes.destroy');
 
 Route::get('/ingredients', 'IngredientController@index')->name('ingredients.index');
 Route::get('/ingredients/create', 'IngredientController@create')->name('ingredients.create');
 Route::get('/ingredients/{id}', 'IngredientController@show')->name('ingredients.show');
 Route::post('/ingredients/store', 'IngredientController@store')->name('ingredients.store');
 Route::get('/ingredients/{id}/edit', 'IngredientController@edit')->name('ingredients.edit');
-Route::put('/ingredients/{id}', 'IngredientController@update')->name('ingredients.update');
-Route::delete('/ingredients/{id}', 'IngredientController@destroy')->name('ingredients.destroy');
+Route::put('/ingredients/{mealid}/{id}', 'IngredientController@update')->name('ingredients.update');
+Route::delete('/ingredients/{mealid}/{id}', 'IngredientController@destroy')->name('ingredients.destroy');
 
 Route::get('/recipes', 'RecipeController@index')->name('recipes.index');
 Route::get('/recipes/create', 'RecipeController@create')->name('recipes.create');

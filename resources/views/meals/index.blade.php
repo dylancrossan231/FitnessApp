@@ -26,18 +26,21 @@
                         <td>{{ $meal->date }}</td>
                         <td>{{ $meal->time }}</td>
 
+                        <a href="{{ route('meals.show', $meal->id) }}" class="btn btn-primary">View</a>
+
+
                       </table>
                       </tbody>
 
                     </table>
-                    <a href="{{ route('meals.show', $meal->id) }}" class="btn btn-link">View</a>
+
 
                      @endif
                     @endforeach
 
                   @endforeach
 
-              
+
 
                 <input id="date" type="date" class="form-control" name="date" value="{{ date('YY-mm-dd') }}">
 

@@ -20,7 +20,7 @@
                       </tr>
                     </tbody>
                   </table>
-                  <a href="{{ route('recipes.index') }}" class="btn btn-default">Back</a>
+                  <a href="{{ url()->previous() }}" class="btn btn-default">Back</a>
                   <a href="{{ route('recipes.edit', $recipe->id) }}" class="btn btn-warning">Edit</a>
                   <form style="display:inline-block" method="POST" action="{{ route('recipes.destroy', $recipe->id) }}">
                     <input type="hidden" name="_method" value="DELETE">
@@ -29,15 +29,13 @@
                   </form>
                 </div>
             </div>
+
         </div>
-    </div>
-</div>
-<div class="container">
+        <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
               <div class="card-header">Ingredients
-                <a href="{{ route('ingredients.create') }}" class="btn btn-primary float-right">Add</a>
               </div>
                 <div class="card-body">
                   @if (count($ingredients) === 0)
@@ -155,4 +153,9 @@
         </div>
     </div>
 </div>
+    </div>
+
+
+</div>
+
 @endsection

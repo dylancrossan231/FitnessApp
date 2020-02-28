@@ -52,7 +52,7 @@
                       </tr>
                     </tbody>
                   </table>
-                  <a href="{{ route('ingredients.index') }}" class="btn btn-default">Back</a>
+                  <a href="{{ url()->previous() }}" class="btn btn-default">Back</a>
                   <a href="{{ route('ingredients.edit', $ingredient->id) }}" class="btn btn-warning">Edit</a>
                   <form style="display:inline-block" method="POST" action="{{ route('ingredients.destroy', $ingredient->id) }}">
                     <input type="hidden" name="_method" value="DELETE">

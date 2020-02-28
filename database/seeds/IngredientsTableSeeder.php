@@ -20,19 +20,19 @@ class IngredientsTableSeeder extends Seeder
      */
     public function run()
     {
-    //   $ingredient = new Ingredient();
-    //   $ingredient->name = 'Apple';
-    //   $ingredient->unit = 'kg';
-    //   $ingredient->energy_kj = '500';
-    //   $ingredient->energy_kcal = '125';
-    //   $ingredient->protein = '20';
-    //   $ingredient->carbs = '60';
-    //   $ingredient->sugar = '12';
-    //   $ingredient->fat = '8.9';
-    //   $ingredient->saturated_fat = '8.9';
-    //   $ingredient->fiber = '2.1';
-    //   $ingredient->is_product = '0';
-    //   $ingredient->save();
-    //
-    // }
+      $ingredient = new Ingredient();
+      $ingredient->name = 'Apple';
+      $ingredient->unit = 'kg';
+      $ingredient->energy_kj = '500';
+      $ingredient->energy_kcal = '125';
+      $ingredient->protein = '20';
+      $ingredient->carbs = '60';
+      $ingredient->sugar = '12';
+      $ingredient->fat = '8.9';
+      $ingredient->saturated_fat = '8.9';
+      $ingredient->fiber = '2.1';
+      $ingredient->is_product = '0';
+      $ingredient->save();
+
+    }
 }
