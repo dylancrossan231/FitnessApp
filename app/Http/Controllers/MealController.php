@@ -93,7 +93,10 @@ class MealController extends Controller
       foreach($request->ingredient as  $ingredient_id=>$ingredient){
         if($ingredient['checked']="true" && $ingredient['amount']!==null){
          $meal->ingredient()->attach($ingredient_id,[
+
+
         'ingredient_amount' => $ingredient['amount']]);
+
       }
       }
 
@@ -110,7 +113,7 @@ class MealController extends Controller
     {
       $meal = Meal::findOrFail($id);
       $recipe = $meal->recipe()->get();
-      $ingredient = $meal->recipe()->ingredient()->get();
+      $ingredient = $meal->ingredient()->get();
 
       return view('meals.show')->with([
         'meal' => $meal,
