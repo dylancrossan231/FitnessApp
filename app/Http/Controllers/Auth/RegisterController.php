@@ -43,26 +43,29 @@ class RegisterController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'username' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'name' => ['required', 'string', 'max:255'],
-            'dob' => ['required', 'date'],
-            'gender' => ['required', 'string', 'max:1'],
-            'country' => ['required', 'string', 'max:255'],
-            'height' => ['required'],
-            'start_weight' => ['required'],
-            'goal_weight' => ['required'],
-            'activity_level' => ['required'],
-            'profile_info' => ['required', 'string', 'max:255'],
-        ]);
-    }
+      * @param  array  $data
+      * @return \Illuminate\Contracts\Validation\Validator
+      */
+     protected function validator(array $data)
+     {
+         return Validator::make($data, [
+             'username' => ['required', 'string', 'max:255'],
+             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+             'password' => ['required', 'string', 'min:8', 'confirmed'],
+             'name' => ['required', 'string', 'max:255'],
+             'dob' => ['required', 'date'],
+             'gender' => ['required', 'string', 'max:255'],
+             'country' => ['required', 'string', 'max:255'],
+             'height' => ['required'],
+             'start_weight' => ['required'],
+             'goal_weight' => ['required'],
+             'activity_level' => ['required'],
+            'profile_info' => ['required', 'string', 'max:255']
+            
+
+         ]);
+
+     }
 
     /**
      * Create a new user instance after a valid registration.
@@ -84,7 +87,8 @@ class RegisterController extends Controller
             'start_weight' => $data['start_weight'],
             'goal_weight' => $data['goal_weight'],
             'activity_level' => $data['activity_level'],
-            'profile_info' => $data['profile_info'],
+            'profile_info' => $data['profile_info']
         ]);
+        
     }
 }

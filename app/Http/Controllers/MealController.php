@@ -178,21 +178,23 @@ class MealController extends Controller
      */
     public function destroy($id)
     {
+      $meal = Meal::findOrFail($id);
       $meal->delete();
       return redirect()->route('meals.index');
     }
 
-    public function destroyrecipe($mealid,$id){
+    public function destroymealrecipe($mealid, $recipe_id){
       $meal = Meal::findOrFail($mealid);
-      $meal->recipe()->detach($id);
-      return redirect()->route('meals.index');
+
+      $meal->recipe()->detach($recipe_id);
+      return redirect()->route('meals.show', $mealid);
 
 
     }
-    public function destroyingredient($mealid,$id ){
+    public function destroymealingredient($mealid, $ingredient_id){
       $meal = Meal::findOrFail($mealid);
-      $meal->recipe()->detach($id);
-      return redirect()->route('meals.index');
+      $meal->ingredient()->detach($ingredient_id);
+      return redirect()->route('meals.show', $mealid);
 
 
 

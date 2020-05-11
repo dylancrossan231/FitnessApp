@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
+
     <div class="row justify-content-center">
         <div class="col-md-10 col-mid-offset-2">
             <div class="card">
@@ -96,7 +97,7 @@
                   </table>
                   <a href="{{ route('recipes.show', $recipe->id) }}" class="btn btn-default">View</a>
 
-                  <form style="display:inline-block" method="POST" action="{{ route('mealrecipes.destroy', $recipe->id, $meal->id) }}">
+                  <form style="display:inline-block" method="POST" action="{{ route('mealrecipes.destroy', ['mealid' => $meal->id, 'recipe_id' => $recipe->id]) }}">
                     <input type="hidden" name="_method" value="DELETE">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <button type="submit" class="form-control btn btn-danger">Delete</>
@@ -217,8 +218,7 @@
                               </script></td>
 
                             <td>
-                              <a href="{{ route('ingredients.show', $ingredient->id) }}" class="btn btn-default">View</a>
-                              <form style="display:inline-block" method="POST" action="{{ route('mealingredients.destroy', $ingredient->id, $meal->id) }}">
+                              <form style="display:inline-block" method="POST" action="{{ route('mealingredients.destroy',['mealid' => $meal->id, 'ingredient_id' => $ingredient->id]) }}">
                                 <input type="hidden" name="_method" value="DELETE">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <button type="submit" class="form-control btn btn-danger">Delete</>

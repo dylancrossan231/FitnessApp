@@ -131,7 +131,7 @@ class RecipeController extends Controller
     public function update(Request $request,$id)
     {
       $recipe = Recipe::findOrFail($id);
-
+      
       $request->validate([
         'name' => 'required|max:25',
         'portions' => 'required'
@@ -142,12 +142,25 @@ class RecipeController extends Controller
 
       $recipe->save($request->all());
 
+      
       foreach($request->ingredient as  $ingredient_id=>$ingredient){
-        if($ingredient['checked']="true" && $ingredient['amount']!==null){
+        $ingredient_exists = $recipe->ingredient()->where('ingredient_id', $ingredient_id)->get();
+
+        if($ingredient['checked']="true" && $ingredient['amount']!==null && $ingredient_exists == null){
          $recipe->ingredient()->attach($ingredient_id,[
+           
         'ingredient_amount' => $ingredient['amount']]);
+        }  else {
+          $recipe->ingredient()->updateExistingPivot($ingredient_id, ['ingredient_amount' => $ingredient['amount']]);
+          // $model->problems()->updateExistingPivot($problemId, ['price' => $newPrice]);
+          // $recipe->ingredient()->attach($ingredient_id,[
+            // ingredient_exists
+          // $ingredient_exists['amount'] = $ingredient_exists['amount']]} + 
+        }
       }
-      }
+
+
+
 
 
       return redirect()->route('recipes.index');
@@ -165,7 +178,14 @@ class RecipeController extends Controller
       $recipe->delete();
       return redirect()->route('recipes.index');
     }
-    public function destroyingredient($id){
-      
+   
+    public function destroyingredient($id, $ingredient_id){
+        $recipe = Recipe::findOrFail($id);
+        $ingredient = Ingredient::findOrFail($ingredient_id);
+
+        $recipe->ingredient()->detach($recipe->ingredient_id);
+        return redirect()->route('recipes.show', $recipe->id);
     }
+
+    
 }

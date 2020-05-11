@@ -137,7 +137,7 @@
                         <td>
                           <a href="{{ route('ingredients.show', $ingredient->id) }}" class="btn btn-default">View</a>
                           <a href="{{ route('ingredients.edit', $ingredient->id) }}" class="btn btn-warning">Edit</a>
-                          <form style="display:inline-block" method="POST" action="{{ route('ingredients.destroy', $ingredient->id) }}">
+                          <form style="display:inline-block" method="POST" action="{{ route('recipes.destroyingredient', ['id' => $recipe->id, 'ingredient_id' => $ingredient->id]) }}">
                             <input type="hidden" name="_method" value="DELETE">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <button type="submit" class="form-control btn btn-danger">Delete</>
